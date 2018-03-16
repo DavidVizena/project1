@@ -11,7 +11,7 @@ body {
 }
 
 #homeSection {
-    background: url("../images/bandBG.jpeg") no-repeat;
+    background: url("../images/sunsetBG.jpeg") no-repeat;
     min-height: 700px;
     background-size: cover;
     background-attachment: fixed;
