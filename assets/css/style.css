@@ -1,0 +1,5 @@
+/* Entire document will take margins/padding etc into account when sizing */
+*{
+    box-sizing: border-box;
+}
+/*  */
