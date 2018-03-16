@@ -25,7 +25,7 @@
     <!-- PERSONAL JAVASCRIPT SHEET -->
     <script src="./assets/js/app.js"></script>
     <!-- GOOGLE MAPS LINK -->
-    <script asyn defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw&callback=myMap"></script>
+    <script asyn defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw&callback=displayMap"></script>
 
     <title>Huddle - Meetup</title>
 </head>
@@ -143,24 +143,19 @@
     <section id="exploreSection" class="bg-light text-muted py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-6" id="map">
-                </div>
+                <div class="col-md-6" id="map"></div>
                 <div class="col-md-6">
                     <h3>Add Location Spots Below</h3>
                     <br>
                     <form>
                         <div class="form-group">
-                            <input type="location" class="form-control" id="spotLocationText" aria-describedby="spotLocationText" placeholder="Enter Spot Location Here">
+                            <input type="location" class="form-control" id="location" aria-describedby="spotLocationText" placeholder="Enter Spot Location Here">
                         </div>
                         <p></p>
-                        <button type="submit" class="btn">Add a Spot</button>
+                        <button type="submit" class="btn" id="addLocation">Add a Spot</button>
                     </form>
-                    <div class="d-flex flex-row">
-                        <p>THIS WILL BE THE CATCH SPOT FOR ALL ENTERED LOCATIONS!!!! Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Nemo, assumenda rerum excepturi delectus ipsam doloremque velit quaerat nihil
-                            aspernatur laboriosam sapiente alias! Doloribus, animi esse. Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit. Dolor eius quod officia quos temporibus, maiores fugiat reprehenderit dicta
-                            autem quaerat cumque itaque culpa? Excepturi, eveniet!</p>
+                    <div class="d-flex flex-row" id="addedLocations">
+                        
                     </div>
                     <button type="submit" class="btn">Submit Locations</button>
                     <div class="d-flex flex-row">
