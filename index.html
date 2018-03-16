@@ -10,6 +10,8 @@
     <!-- BOOTSTRAP STYLE SHEET -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <!-- FONT AWESOME CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- PERSONAL STYLE SHEET -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- JQUERY SCRIPT LINKS -->
@@ -20,48 +22,306 @@
     <title>Huddle - Meetup</title>
 </head>
 
-<body>
-<<<<<<< HEAD
-    
-
-
-    
-=======
-    <!-- Jumbotron filler -->
-    <div class="jumbotron jumbotron-fluid text-center">
+<body id="home">
+    <!-- TOP NAVBAR -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class="container">
-            <h1 class="display-4">Huddle</h1>
-            <p class="lead">Making meeting up easier</p>
+            <a href="index.html" class="navbar-brand">Huddle</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#exploreHeadSection" class="nav-link">Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#createHeadSection" class="nav-link">Create</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#shareHeadSection" class="nav-link">Share</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
+    <!--  -->
 
-    <!-- location filler -->
-    <div class="container">
-        <div class="row">
+    <!-- HOME SECTION -->
+    <header id="homeSection">
+        <div class="darkOverlay">
+            <div class="homeInner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 d-none d-lg-block">
+                            <h1 class="display-4">Build
+                                <strong>social profiles</strong> and gain revenue & profits</h1>
+                            <div class="d-flex flex-row">
+                                <div class="p-4 align-self-start">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div class="p-4 align-self-end">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt beatae, quaerat earum
+                                    iure dolor nulla. Assumenda sed eligendi quam veritatis velit repudiandae non reiciendis
+                                    voluptas ipsa omnis aliquam, facere quasi!</div>
+                            </div>
+                            <div class="d-flex flex-row">
+                                <div class="p-4 align-self-start">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div class="p-4 align-self-end">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt beatae, quaerat earum
+                                    iure dolor nulla. Assumenda sed eligendi quam veritatis velit repudiandae non reiciendis
+                                    voluptas ipsa omnis aliquam, facere quasi!</div>
+                            </div>
+                            <div class="d-flex flex-row">
+                                <div class="p-4 align-self-start">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div class="p-4 align-self-end">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt beatae, quaerat earum
+                                    iure dolor nulla. Assumenda sed eligendi quam veritatis velit repudiandae non reiciendis
+                                    voluptas ipsa omnis aliquam, facere quasi!</div>
+                            </div>
 
-            <div class="col-md-12">
-                <div class="card ">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="card-title">Add Locations</h4>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card bg-primary text-center card-form">
+                                <div class="card-body">
+                                    <h3>Sign Up Today</h3>
+                                    <p>Please fill out this form to register</p>
+                                    <form>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form control-lg" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form control-lg" placeholder="E-mail">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form control-lg" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form control-lg" placeholder="Confirm Password">
+                                        </div>
+                                        <input type="submit" value="Submit" class="btn btn-outline-light btn-block">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body" id="locations">
-                            <form>
-                                    <div class="form-row align-items-center">
-                                      <div class="col-md-11">
-                                        <input type="text" class="form-control" placeholder="Location">
-                                      </div>
-                                      <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                  </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--  -->
 
+    <!-- EXPLORE HEAD -->
+    <section id="exploreHeadSection">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="p-5">
+                        <h1 class="display-4">Explore</h1>
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro blanditiis accusamus nam earum tenetur
+                            recusandae esse, natus deserunt debitis. Sapiente.</p>
+                        <a href="#" class="btn btn-outline-secondary">Find out more</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  -->
 
+    <!-- EXPLORE SECTION -->
+    <section id="exploreSection" class="bg-light text-muted py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="./assets/images/exploreBG.jpeg" alt="" class="img-fluid mb-3 rounded-circle">
+                </div>
+                <div class="col-md-6">
+                    <h3>Explore & Connect</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex voluptatibus velit provident dolorem necessitatibus!
+                        Vitae eum magnam cum quam architecto illo, temporibus dolorem natus. Repudiandae optio quisquam libero
+                        tempora odio.</p>
+                    <div class="d-flex flex-row">
+                        <div class="p-4 align-self-start">
+                            <i id="exploreCheck" class="fa fa-check"></i>
+                        </div>
+                        <div class="p-4 align-self-end">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt beatae, quaerat earum iure dolor
+                            nulla. Assumenda sed eligendi quam veritatis velit repudiandae non reiciendis voluptas ipsa omnis
+                            aliquam, facere quasi!</div>
+                    </div>
+                    <div class="d-flex flex-row">
+                        <div class="p-4 align-self-start">
+                            <i id="exploreCheck" class="fa fa-check"></i>
+                        </div>
+                        <div class="p-4 align-self-end">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt beatae, quaerat earum iure dolor
+                            nulla. Assumenda sed eligendi quam veritatis velit repudiandae non reiciendis voluptas ipsa omnis
+                            aliquam, facere quasi!</div>
+                    </div>
 
                 </div>
             </div>
         </div>
+    </section>
+    <!--  -->
 
->>>>>>> 817b62966dba2a5236ac5a33bc5a1fbb15ea0d46
+    <!-- CREATE HEAD -->
+    <section id="createHeadSection" class="bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="p-5">
+                        <h1 class="display-4">Create</h1>
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro blanditiis accusamus nam earum tenetur
+                            recusandae esse, natus deserunt debitis. Sapiente.</p>
+                        <a href="#" class="btn btn-outline-light">Find out more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  -->
+
+    <!-- CREATE SECTION -->
+    <section id="createSection" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Create Your Passion</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex voluptatibus velit provident dolorem necessitatibus!
+                        Vitae eum magnam cum quam architecto illo, temporibus dolorem natus. Repudiandae optio quisquam libero
+                        tempora odio.</p>
+                    <div class="d-flex flex-row">
+                        <div class="p-4 align-self-start">
+                            <i id="createCheck" class="fa fa-check"></i>
+                        </div>
+                        <div class="p-4 align-self-end">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt beatae, quaerat earum iure dolor
+                            nulla. Assumenda sed eligendi quam veritatis velit repudiandae non reiciendis voluptas ipsa omnis
+                            aliquam, facere quasi!
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row">
+                        <div class="p-4 align-self-start">
+                            <i id="createCheck" class="fa fa-check"></i>
+                        </div>
+                        <div class="p-4 align-self-end">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt beatae, quaerat earum iure dolor
+                            nulla. Assumenda sed eligendi quam veritatis velit repudiandae non reiciendis voluptas ipsa omnis
+                            aliquam, facere quasi!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="./assets/images/createBG.jpeg" alt="" class="img-fluid mb-3 rounded-circle">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  -->
+
+    <!-- SHARE HEAD -->
+    <section id="shareHeadSection" class="bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="p-5">
+                        <h1 class="display-4">Share</h1>
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro blanditiis accusamus nam earum tenetur
+                            recusandae esse, natus deserunt debitis. Sapiente.</p>
+                        <a href="#" class="btn btn-outline-light">Find out more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  -->
+
+    <!-- SHARE SECTION -->
+    <section id="shareSection" class="bg-light text-muted py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="./assets/images/shareBG.jpg" alt="" class="img-fluid mb-3 rounded-circle">
+                </div>
+                <div class="col-md-6">
+                    <h3>Share</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex voluptatibus velit provident dolorem necessitatibus!
+                        Vitae eum magnam cum quam architecto illo, temporibus dolorem natus. Repudiandae optio quisquam libero
+                        tempora odio.</p>
+                    <div class="d-flex flex-row">
+                        <div class="p-4 align-self-start">
+                            <i id="shareCheck" class="fa fa-check"></i>
+                        </div>
+                        <div class="p-4 align-self-end">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt beatae, quaerat earum iure dolor
+                            nulla. Assumenda sed eligendi quam veritatis velit repudiandae non reiciendis voluptas ipsa omnis
+                            aliquam, facere quasi!</div>
+                    </div>
+                    <div class="d-flex flex-row">
+                        <div class="p-4 align-self-start">
+                            <i id="shareCheck" class="fa fa-check"></i>
+                        </div>
+                        <div class="p-4 align-self-end">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt beatae, quaerat earum iure dolor
+                            nulla. Assumenda sed eligendi quam veritatis velit repudiandae non reiciendis voluptas ipsa omnis
+                            aliquam, facere quasi!</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  -->
+
+    <!-- MAIN FOOTER -->
+    <footer id="mainFooter" class="bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="py-4">
+                        <h1 class="h3">Huddle</h1>
+                        <p>Copyright &copy; 2018</p>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Contact Us</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--  -->
+
+    <!-- CONTACT MODAL -->
+    <div class="modal fade text-dark" role="dialog" id="contactModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalTitle">
+                        Contact Us
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-block">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+
 </body>
+Î
 
 </html>

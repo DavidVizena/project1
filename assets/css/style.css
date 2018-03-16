@@ -1,6 +1,61 @@
-/* Entire document will take margins/padding etc into account when sizing */
-*{
-    box-sizing: border-box;
+/* Begin CSS */
+
+body {
+    background: #333;
+    color: #fff;
+}
+
+.navbar {
+    border-bottom: #008ed6 3px solid;
+    opacity: 0.8;
+}
+
+#homeSection {
+    background: url("../images/bandBG.jpeg") no-repeat;
+    min-height: 700px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.darkOverlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 700px;
+}
+
+.homeInner {
+    padding-top: 150px;
+}
+
+.card-form {
+    opacity: 0.8;
+}
+
+.fa {
+    color: #008ed6;
+    background: #fff;
+    padding: 4px;
+    border-radius: 5px;
+    font-size: 30px;
+}
+
+#exploreCheck {
+    color: #fff;
+    background: #333;
+    padding: 4px;
+    border-radius: 5px;
+    font-size: 30px;
+}
+
+#shareCheck {
+    color: #fff;
+    background: #333;
+    padding: 4px;
+    border-radius: 5px;
+    font-size: 30px;
 }
 
 /*  */
