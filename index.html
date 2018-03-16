@@ -22,11 +22,10 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- JQUERY SCRIPT LINKS -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <!-- GOOGLE MAPS LINK -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw
-    &callback=initMap"></script>
     <!-- PERSONAL JAVASCRIPT SHEET -->
     <script src="./assets/js/app.js"></script>
+    <!-- GOOGLE MAPS LINK -->
+    <script asyn defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw&callback=myMap"></script>
 
     <title>Huddle - Meetup</title>
 </head>
@@ -144,8 +143,7 @@
     <section id="exploreSection" class="bg-light text-muted py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div id="map"></div>
+                <div class="col-md-6" id="map">
                 </div>
                 <div class="col-md-6">
                     <h3>Add Location Spots Below</h3>
