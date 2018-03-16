@@ -6,7 +6,7 @@ body {
 }
 
 .navbar {
-    border-bottom: #008ed6 3px solid;
+    border-bottom: #ee7b3c 3px solid;
     opacity: 0.8;
 }
 
@@ -15,6 +15,14 @@ body {
     min-height: 700px;
     background-size: cover;
     background-attachment: fixed;
+}
+
+.card-body{
+    background: #ee7b3c;
+}
+
+.navbar-brand {
+    color: #ee7b3c !important;
 }
 
 .darkOverlay {
@@ -35,11 +43,23 @@ body {
 }
 
 .fa {
-    color: #008ed6;
+    color: #ee7b3c;
     background: #fff;
     padding: 4px;
     border-radius: 5px;
     font-size: 30px;
+}
+
+#createHeadSection{
+    background: #ee7b3c;
+}
+
+#shareHeadSection{
+    background: #ee7b3c;
+}
+
+.btn{
+    background: #ee7b3c;
 }
 
 #exploreCheck {
