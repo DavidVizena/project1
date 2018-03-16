@@ -27,9 +27,8 @@ $(document).ready(function () {
 
             $('#location').val('');
 
+            // Set url to be used for AJAX request by inserting searched for address in, AJAX is used to return GPS coordinates of searched location
             var queryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + location + '&key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw';
-
-            console.log(queryURL);
 
             $.ajax({
                 url: queryURL,
@@ -38,6 +37,7 @@ $(document).ready(function () {
 
             }).then(function (res) {
             
+                // Once the AJAX has run, pull out the latitude and longitude of searched address and use to dispaly marker on map
                 var latLong = res.results[0].geometry.location;
                 var locationLat = latLong.lat;
                 var locationLong = latLong.lng;
