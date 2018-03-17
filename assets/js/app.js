@@ -1,21 +1,8 @@
-var map;
-
-// Function to be called by Google Maps on callback, outside document.ready to prevent issues with load
-function displayMap() {
-
-    var mapProp = {
-        center: new google.maps.LatLng(29.756846, -95.363444),
-        zoom: 10,
-    };
-    var mapLocate = document.getElementById("map");
-    map = new google.maps.Map(mapLocate, mapProp);
-
-}
-
 $(document).ready(function () {
 
     var locations = [];
     var center;
+    var map;
 
     function newLocation() {
 
@@ -84,7 +71,12 @@ $(document).ready(function () {
                 centerPoint = JSON.parse(JSON.stringify(bounds.getCenter()));
                 console.log(centerPoint);
 
+<<<<<<< HEAD
                 
+=======
+                console.log(bounds);
+
+>>>>>>> f7f77ee2ee0c1d278b07203c00d736e8d441d23f
             });
             
         };
@@ -92,10 +84,30 @@ $(document).ready(function () {
 
     };
 
+<<<<<<< HEAD
+=======
+    function makeMap() {
+
+        $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw', function () {
+
+        console.log('success');
+            var mapProp = {
+                center: new google.maps.LatLng(29.756846, -95.363444),
+                zoom: 10,
+            };
+            var mapLocate = document.getElementById("map");
+            map = new google.maps.Map(mapLocate, mapProp);
+
+        })
+
+    }
+>>>>>>> f7f77ee2ee0c1d278b07203c00d736e8d441d23f
 
     $('#addLocation').on('click', newLocation);
 
     $('#submitLocations').on('click', findCenter);
+
+    makeMap();
 
 
 
