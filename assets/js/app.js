@@ -71,12 +71,8 @@ $(document).ready(function () {
                 centerPoint = JSON.parse(JSON.stringify(bounds.getCenter()));
                 console.log(centerPoint);
 
-<<<<<<< HEAD
-                
-=======
                 console.log(bounds);
 
->>>>>>> f7f77ee2ee0c1d278b07203c00d736e8d441d23f
             });
             
         };
@@ -84,8 +80,6 @@ $(document).ready(function () {
 
     };
 
-<<<<<<< HEAD
-=======
     function makeMap() {
 
         $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw', function () {
@@ -101,7 +95,6 @@ $(document).ready(function () {
         })
 
     }
->>>>>>> f7f77ee2ee0c1d278b07203c00d736e8d441d23f
 
     $('#addLocation').on('click', newLocation);
 
