@@ -59,38 +59,43 @@ $(document).ready(function () {
         if (locations[1]) {
 
             var bounds = new google.maps.LatLngBounds;
-            
             $.each(locations, function (i) {
                 console.log('getting location');
 
                 bounds.extend(locations[i]);
 
                 map.fitBounds(bounds);
-                
-                $('#test').text(bounds.getCenter());
+
                 centerPoint = JSON.parse(JSON.stringify(bounds.getCenter()));
                 console.log(centerPoint);
-
-<<<<<<< HEAD
-                
-=======
-                console.log(bounds);
-
->>>>>>> f7f77ee2ee0c1d278b07203c00d736e8d441d23f
             });
-            
+
+
+            var queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=AIzaSyC8gvqoFEacptQQDQaI7wBLTEnqIXq97-g"
+            $.ajax({
+                // type: "POST",
+                // dataType: 'jsonp',
+                url: queryURL,
+                method: 'Get'
+
+            }).then(function (res) {
+                console.log(res);
+                console.log("got it")
+            });
+
         };
 
 
+        // var service = new google.maps.places.PlacesService(centerPoint);
+        // console.log(services);
+
     };
 
-<<<<<<< HEAD
-=======
     function makeMap() {
 
         $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw', function () {
 
-        console.log('success');
+            console.log('success');
             var mapProp = {
                 center: new google.maps.LatLng(29.756846, -95.363444),
                 zoom: 10,
@@ -101,7 +106,6 @@ $(document).ready(function () {
         })
 
     }
->>>>>>> f7f77ee2ee0c1d278b07203c00d736e8d441d23f
 
     $('#addLocation').on('click', newLocation);
 
