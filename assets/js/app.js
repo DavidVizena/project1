@@ -64,9 +64,19 @@ $(document).ready(function () {
         event.preventDefault();
 
         if (locations[2]) {
-            console.log('begin');
-        }
-    }
+
+            var bounds = new google.maps.LatLngBounds;
+            
+            $.each(locations, function(i, value){
+                console.log('getting location');
+
+                bounds.extend(locations[i]);
+
+                console.log(bounds.getCenter());
+            });
+            
+        };
+    };
 
     $('#addLocation').on('click', newLocation);
 
