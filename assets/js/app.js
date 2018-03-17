@@ -96,6 +96,8 @@ $(document).ready(function () {
 
         };
 
+    
+
 
         // var service = new google.maps.places.PlacesService(centerPoint);
         // console.log(services);
