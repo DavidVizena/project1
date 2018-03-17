@@ -70,6 +70,7 @@ $(document).ready(function () {
                 console.log(centerPoint);
             });
 
+<<<<<<< HEAD
 
             var queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=AIzaSyC8gvqoFEacptQQDQaI7wBLTEnqIXq97-g"
             $.ajax({
@@ -81,6 +82,10 @@ $(document).ready(function () {
             }).then(function (res) {
                 console.log(res);
                 console.log("got it")
+=======
+                console.log(bounds);
+
+>>>>>>> 89e889c0b0713c50483d2d3cb1ac69f01ce3ab52
             });
 
         };

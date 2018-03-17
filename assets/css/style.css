@@ -75,6 +75,20 @@ body {
     width: 500px;
 }
 
+.carousel-inner .card{
+    width: 500px;
+    height: 215px;
+}
+
+#yelpCaro{
+    width: 500px;
+    height: 225px;
+    border-style: solid;
+    border-color: #333;
+    border-width: 5px;
+    /* background-color: aquamarine; */
+}
+
 #shareCheck {
     color: #fff;
     background: #333;
@@ -82,5 +96,6 @@ body {
     border-radius: 5px;
     font-size: 30px;
 }
+
 
 /*  */
