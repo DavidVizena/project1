@@ -70,17 +70,16 @@ $(document).ready(function () {
                 console.log(centerPoint);
             });
 
-                console.log(bounds);
-
-            });
+            };
 
         };
+
+    
 
 
         // var service = new google.maps.places.PlacesService(centerPoint);
         // console.log(services);
 
-    };
 
     function makeMap() {
 
