@@ -61,6 +61,10 @@ $(document).ready(function () {
 
     };
 
+
+    var centerPoint;
+
+
     function findCenter() {
 
         event.preventDefault();
@@ -68,22 +72,26 @@ $(document).ready(function () {
         if (locations[1]) {
 
             var bounds = new google.maps.LatLngBounds;
-
+            
             $.each(locations, function (i) {
                 console.log('getting location');
 
                 bounds.extend(locations[i]);
 
                 map.fitBounds(bounds);
-
+                
                 $('#test').text(bounds.getCenter());
+                centerPoint = JSON.parse(JSON.stringify(bounds.getCenter()));
+                console.log(centerPoint);
 
+                
             });
-
+            
         };
 
 
     };
+
 
     $('#addLocation').on('click', newLocation);
 
