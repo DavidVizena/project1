@@ -13,6 +13,8 @@ function displayMap() {
 
 $(document).ready(function () {
 
+    var locations = [];
+
     function newLocation() {
 
         event.preventDefault();
@@ -24,8 +26,9 @@ $(document).ready(function () {
             var location = $('#location').val().trim()
             var newDiv = $('<div>').text(location);
             newDiv.appendTo('#addedLocations');
-
             $('#location').val('');
+
+            locations.push(location);
 
             // Set url to be used for AJAX request by inserting searched for address in, AJAX is used to return GPS coordinates of searched location
             var queryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + location + '&key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw';
@@ -36,15 +39,15 @@ $(document).ready(function () {
 
 
             }).then(function (res) {
-            
+
                 // Once the AJAX has run, pull out the latitude and longitude of searched address and use to dispaly marker on map
                 var latLong = res.results[0].geometry.location;
                 var locationLat = latLong.lat;
                 var locationLong = latLong.lng;
 
-                var locationCordinates = {lat: locationLat, lng: locationLong};
+                var locationCordinates = { lat: locationLat, lng: locationLong };
 
-                var newMarker = new google.maps.Marker({position: locationCordinates});
+                var newMarker = new google.maps.Marker({ position: locationCordinates });
 
                 newMarker.setMap(map);
 
@@ -54,9 +57,9 @@ $(document).ready(function () {
 
     };
 
-        $('#addLocation').on('click', newLocation);
+    $('#addLocation').on('click', newLocation);
 
 
 
-        // Closing tag for document.ready
-    });
+    // Closing tag for document.ready
+});
