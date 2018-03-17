@@ -18,8 +18,18 @@ $(document).ready(function () {
 
     db = firebase.database();
 
-    function submitData1() {
-        var ref = db.ref("newTrain");
+    function submitData() {
+
+        // add it to a javascript object
+        var data = {
+            userName: "",
+            email: "",
+            pass: "",
+        }
+
+        //pushes data obj to firebase node "newTrain"
+        var ref = db.ref("users");
+        ref.push(data);
         ref.on("value", getData);
     }
 
@@ -92,15 +102,15 @@ $(document).ready(function () {
                 console.log(centerPoint);
             });
 
-            };
-
         };
 
-    
+    };
 
 
-        // var service = new google.maps.places.PlacesService(centerPoint);
-        // console.log(services);
+
+
+    // var service = new google.maps.places.PlacesService(centerPoint);
+    // console.log(services);
 
 
     function makeMap() {
