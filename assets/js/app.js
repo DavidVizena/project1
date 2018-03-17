@@ -92,18 +92,7 @@ $(document).ready(function () {
                 console.log(centerPoint);
             });
 
-
-            var queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=AIzaSyC8gvqoFEacptQQDQaI7wBLTEnqIXq97-g"
-            $.ajax({
-                // type: "POST",
-                // dataType: 'jsonp',
-                url: queryURL,
-                method: 'Get'
-
-            }).then(function (res) {
-                console.log(res);
-                console.log("got it")
-            });
+            };
 
         };
 
@@ -111,7 +100,6 @@ $(document).ready(function () {
         // var service = new google.maps.places.PlacesService(centerPoint);
         // console.log(services);
 
-    };
 
     function makeMap() {
 
