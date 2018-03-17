@@ -9,11 +9,13 @@ function displayMap() {
     };
     var mapLocate = document.getElementById("map");
     map = new google.maps.Map(mapLocate, mapProp);
+
 }
 
 $(document).ready(function () {
 
     var locations = [];
+    var center;
 
     function newLocation() {
 
@@ -59,23 +61,28 @@ $(document).ready(function () {
 
     };
 
-    function findCenter(){
+    function findCenter() {
 
         event.preventDefault();
 
-        if (locations[2]) {
+        if (locations[1]) {
 
             var bounds = new google.maps.LatLngBounds;
-            
-            $.each(locations, function(i, value){
+
+            $.each(locations, function (i) {
                 console.log('getting location');
 
                 bounds.extend(locations[i]);
 
-                console.log(bounds.getCenter());
+                map.fitBounds(bounds);
+
+                $('#test').text(bounds.getCenter());
+
             });
-            
+
         };
+
+
     };
 
     $('#addLocation').on('click', newLocation);
