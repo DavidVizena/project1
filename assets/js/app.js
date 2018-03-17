@@ -28,8 +28,6 @@ $(document).ready(function () {
             newDiv.appendTo('#addedLocations');
             $('#location').val('');
 
-            locations.push(location);
-
             // Set url to be used for AJAX request by inserting searched for address in, AJAX is used to return GPS coordinates of searched location
             var queryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + location + '&key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw';
 
@@ -51,13 +49,28 @@ $(document).ready(function () {
 
                 newMarker.setMap(map);
 
+                locations.push(locationCordinates);
+
+                console.log(locations);
+
             });
 
         };
 
     };
 
+    function findCenter(){
+
+        event.preventDefault();
+
+        if (locations[2]) {
+            console.log('begin');
+        }
+    }
+
     $('#addLocation').on('click', newLocation);
+
+    $('#submitLocations').on('click', findCenter);
 
 
 
