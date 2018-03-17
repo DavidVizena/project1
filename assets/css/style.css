@@ -17,7 +17,7 @@ body {
     background-attachment: fixed;
 }
 
-.card-body{
+.card-body {
     background: #ee7b3c;
 }
 
@@ -50,15 +50,15 @@ body {
     font-size: 30px;
 }
 
-#createHeadSection{
+#createHeadSection {
     background: #ee7b3c;
 }
 
-#shareHeadSection{
+#shareHeadSection {
     background: #ee7b3c;
 }
 
-.btn{
+.btn {
     background: #ee7b3c;
 }
 
@@ -70,17 +70,17 @@ body {
     font-size: 30px;
 }
 
-#map{
+#map {
     height: 500px;
     width: 500px;
 }
 
-.carousel-inner .card{
+.carousel-inner .card {
     width: 500px;
     height: 215px;
 }
 
-#yelpCaro{
+#yelpCaro {
     width: 500px;
     height: 225px;
     border-style: solid;
@@ -96,6 +96,5 @@ body {
     border-radius: 5px;
     font-size: 30px;
 }
-
 
 /*  */
