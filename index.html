@@ -95,8 +95,8 @@
                         <div class="d-flex flex-row">
                             <div class="card text-center card-form">
                                 <div class="card-body">
-                                    <h3>Sign Up Today</h3>
-                                    <p>Please fill out this form to register</p>
+                                    <h3 id="userCard">Sign Up Today</h3>
+                                    <p id="userP">Please fill out this form to register</p>
                                     <form>
                                         <div class="form-group">
                                             <input id="formUsername" type="text" class="form-control form control-lg" placeholder="Username">
@@ -108,9 +108,12 @@
                                             <input id="formPassword" type="password" class="form-control form control-lg" placeholder="Password">
                                         </div>
                                         <div class="form-group">
-                                            <input id="formPassword" type="password" class="form-control form control-lg" placeholder="Confirm Password">
+                                            <input id="formConfirmPassword" type="password" class="form-control form control-lg" placeholder="Confirm Password">
                                         </div>
-                                        <input type="submit" value="Submit" class="btn btn-outline-light btn-block">
+                                        <input id="signUpBtn" type="submit" value="Sign Up" class="btn btn-outline-light btn-block">
+                                        <input id="signInBtn" type="submit" value="click to sign in" class="btn btn-outline-light btn-block">
+                                        <input id="loginBtn" type="submit" value="Login" class="btn btn-outline-light btn-block">
+                                        <input id="logoutBtn" type="submit" value="Logout" class="btn btn-outline-light btn-block">
                                     </form>
                                 </div>
                             </div>
