@@ -6,6 +6,17 @@ $(document).ready(function () {
     var userStatus = false;
     var panelStatus = false;
 
+
+    // SLIDEOUT FROM LEFT SIDE (FRONT END)
+    $(".openSlide, #addText").on("click", function openSlideMenu(){
+        $("#sideMenu").css({ "width": "250px" });
+    });
+
+    $(".btnClose").on("click", function closeSideMenu(){
+        $("#sideMenu").css({ "width": "0" });
+    });
+    // 
+
     statusChecker();
     // Initialize Firebase
     var config = {
@@ -44,8 +55,8 @@ $(document).ready(function () {
             $("#signUpBtn").show();
             $("#loginBtn").hide();
             $("#signInBtn").show();
-            
-        } 
+
+        }
 
         if (panelStatus) {
             $("#userCard").text("Login");
@@ -55,7 +66,7 @@ $(document).ready(function () {
             $("#signInBtn").hide();
             $("#formConfirmPassword").hide();
             $("#loginBtn").show();
-        } 
+        }
     }
 
     // all buttons used for signIn, logout, and login functionality
@@ -86,7 +97,7 @@ $(document).ready(function () {
             var user = firebase.auth().currentUser;
             console.log(user);
             console.log("logged in as: " + user.email);
-            statusChecker(true),false;
+            statusChecker(true), false;
             var email_id = user.email;
             var editGreeting = $("#userCard").text("Welcome User : " + user.email);
         } else {
@@ -110,21 +121,21 @@ $(document).ready(function () {
             alert("Sorry! your passwords do not match, please fix them to continue")
         } else {
             firebase.auth().createUserWithEmailAndPassword(userEmail, userPass)
-            .then(function(){
-                signInAuth()
-            }).catch(function (error) {
-                //TODO: had to put user display name assigning here due to asynchronous issues will tidy up later
-                firebase.auth().currentUser.updateProfile({
-                    displayName: userName,
-                  }).then(function() {
-                //   console.log(user.userName);
-                  });
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log("CreateUserError : " + errorMessage);
-                // signInAuth();
-            });
+                .then(function () {
+                    signInAuth()
+                }).catch(function (error) {
+                    //TODO: had to put user display name assigning here due to asynchronous issues will tidy up later
+                    firebase.auth().currentUser.updateProfile({
+                        displayName: userName,
+                    }).then(function () {
+                        //   console.log(user.userName);
+                    });
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log("CreateUserError : " + errorMessage);
+                    // signInAuth();
+                });
         }
     }
 

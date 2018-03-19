@@ -17,6 +17,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <!-- FONT AWESOME CDN -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- PERSONAL STYLE SHEET -->
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -31,8 +35,15 @@
 </head>
 
 <body id="home">
+
     <!-- TOP NAVBAR -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <span class="openSlide">
+            <a href="#">
+                <i class="fas fa-plus"></i>
+            </a>
+            <span id="addText">ADD A GROUP</span>
+        </span>
         <div class="container">
             <a href="index.html" class="navbar-brand">Huddle</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -56,6 +67,25 @@
             </div>
         </div>
     </nav>
+
+    <div id="sideMenu" class="sideNav">
+        <div id="sideContentWrapper">
+            <a href="#" class="btnClose">&times;</a>
+            <a href="#">
+                <i class="fas fa-plus"></i>
+                <span>Test group #1</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-plus"></i>
+                <span>Test group #2</span>
+            </a>
+
+            <a href="#">
+                <i class="fas fa-plus"></i>
+                <span>Test group #3</span>
+            </a>
+        </div>
+    </div>
     <!--  -->
 
     <!-- HOME SECTION -->
@@ -69,14 +99,14 @@
                                 <strong>Huddle</strong> for you and your friends.</h1>
                             <div class="d-flex flex-row">
                                 <div class="p-4 align-self-start">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                 </div>
                                 <div class="p-4 align-self-end">Huddle offers you the ability to find your friends.
                                 </div>
                             </div>
                             <div class="d-flex flex-row">
                                 <div class="p-4 align-self-start">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                 </div>
                                 <div class="p-4 align-self-end">Have conversations with group members.
 
@@ -84,7 +114,7 @@
                             </div>
                             <div class="d-flex flex-row">
                                 <div class="p-4 align-self-start">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                 </div>
                                 <div class="p-4 align-self-end">Find halfway points for meetups!
 

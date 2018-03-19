@@ -42,7 +42,7 @@ body {
     opacity: 0.8;
 }
 
-.fa {
+.fa-check {
     color: #ee7b3c;
     background: #fff;
     padding: 4px;
@@ -80,7 +80,6 @@ body {
     height: 100%;
 }
 
-
 /* #yelpCaro{
     width: 500px;
     height: 225px;
@@ -88,14 +87,70 @@ body {
     border-color: #333;
     border-width: 5px;
     /* background-color: aquamarine; */
-/* } */ */
 
-#shareCheck {
+/* } */
+
+*/ #shareCheck {
     color: #fff;
     background: #333;
     padding: 4px;
     border-radius: 5px;
     font-size: 30px;
 }
+
+/* SLIDE OUT FROM LEFT SIDE */
+
+#addText {
+    color: #fffff2 !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fa-plus {
+    color: #ee7b3c !important;
+}
+
+.sideNav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 15;
+    top: 5.5%;
+    left: 0;
+    background-color: #111;
+    opacity: 0.6;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+
+.sideNav a {
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #fff;
+    display: block;
+    transition: .5s;
+}
+
+.sideNav a:hover {
+    color: #ee7b3c;
+}
+
+.sideNav .btnClose {
+    position: absolute;
+    z-index: 15;
+    top: 0;
+    right: 22px;
+    font-size: 36;
+    margin-left: 50px;
+}
+
+#sideMenu span {
+    text-align: right;
+}
+
+/*  */
 
 /*  */
