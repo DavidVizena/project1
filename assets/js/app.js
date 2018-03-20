@@ -253,8 +253,14 @@ $(document).ready(function () {
         placesSearch = new google.maps.places.PlacesService(map);
         placesSearch.nearbySearch(parameters, function(res){
             console.log(res);
+
+            for (var i=0; i <= 4; i++){
+                var newMarker = new google.maps.Marker({ position: res[i].geometry.location });
+                newMarker.setMap(map);
+            };
         });
-    }
+
+    };
 
 
 
