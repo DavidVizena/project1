@@ -33,16 +33,20 @@
 
     <title>Huddle - Meetup</title>
 </head>
+<!-- BUTTON FOR POPOUT SIDE MENU -->
+<input type="checkbox" name="switch" id="switch">
+<!--  -->
 
 <body id="home">
 
     <!-- TOP NAVBAR -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <span class="openSlide">
-            <a href="#">
-                <i class="fas fa-plus"></i>
-            </a>
-            <span id="addText">ADD A GROUP</span>
+            <label for="switch" class="btn">
+                <i id="slidePlus" class="fas fa-plus">
+                </i>
+                <span id="addText">ADD A GROUP</span>
+            </label>
         </span>
         <div class="container">
             <a href="index.html" class="navbar-brand">Huddle</a>
@@ -72,7 +76,8 @@
         <div id="sideContentWrapper">
             <ul>
                 <li>
-                    <a href="#" class="btnClose">&times;
+                    <a href="#">
+                        <label for="switch" class="btn btnClose">&cross;</label>
                     </a>
                 </li>
                 <li>

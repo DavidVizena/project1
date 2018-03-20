@@ -6,17 +6,6 @@ $(document).ready(function () {
     var userStatus = false;
     var panelStatus = false;
 
-
-    // SLIDEOUT FROM LEFT SIDE (FRONT END)
-    $(".openSlide, #addText").on("click", function openSlideMenu(){
-        $("#sideMenu").css({ "width": "250px" });
-    });
-
-    $(".btnClose").on("click", function closeSideMenu(){
-        $("#sideMenu").css({ "width": "0" });
-    });
-    // 
-
     statusChecker();
     // Initialize Firebase
     var config = {
