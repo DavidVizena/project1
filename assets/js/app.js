@@ -225,7 +225,29 @@ $(document).ready(function () {
                 console.log(centerPoint);
             });
 
+            findPlaces();
+
         };
+
+    };
+
+    function findPlaces () {
+
+        var parameters = {
+            location: centerPoint,
+            radius: 1000,
+            type: ['restaurant']
+        }
+
+        placesSearch = new google.maps.places.PlacesService(map);
+        placesSearch.nearbySearch(parameters, function(res){
+            console.log(res);
+
+            for (var i=0; i <= 4; i++){
+                var newMarker = new google.maps.Marker({ position: res[i].geometry.location });
+                newMarker.setMap(map);
+            };
+        });
 
     };
 
@@ -238,7 +260,7 @@ $(document).ready(function () {
 
     function makeMap() {
 
-        $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw', function () {
+        $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw&libraries=places', function () {
             var mapProp = {
                 center: new google.maps.LatLng(29.756846, -95.363444),
                 zoom: 10,
