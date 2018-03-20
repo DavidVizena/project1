@@ -7,6 +7,14 @@ $(document).ready(function () {
     var panelStatus = false;
 
     statusChecker();
+
+    // SLIDEOUT MENU
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+        $(this).toggleClass('active');
+    });
+    // 
+
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",

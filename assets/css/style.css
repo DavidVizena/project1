@@ -111,10 +111,12 @@ body {
 .sideNav {
     width: 275px;
     height: 100%;
+    top: 6.3%;
     background: #333;
+    opacity: .9;
     position: fixed;
     z-index: 99;
-    transition: .75s;
+    transition: 1s;
     overflow: auto;
     left: -275px;
 }
