@@ -240,6 +240,10 @@ $(document).ready(function () {
 
     };
 
+    function findPlaces () {
+        
+    }
+
 
 
 
@@ -249,7 +253,7 @@ $(document).ready(function () {
 
     function makeMap() {
 
-        $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw', function () {
+        $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVvFEbKT3bghZxOT581eUo156nRZR4bw&libraries=places', function () {
             var mapProp = {
                 center: new google.maps.LatLng(29.756846, -95.363444),
                 zoom: 10,
