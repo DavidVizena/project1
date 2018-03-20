@@ -236,12 +236,24 @@ $(document).ready(function () {
                 console.log(centerPoint);
             });
 
+            findPlaces();
+
         };
 
     };
 
     function findPlaces () {
-        
+
+        var parameters = {
+            location: centerPoint,
+            radius: 1000,
+            type: ['restaurant']
+        }
+
+        placesSearch = new google.maps.places.PlacesService(map);
+        placesSearch.nearbySearch(parameters, function(res){
+            console.log(res);
+        });
     }
 
 
