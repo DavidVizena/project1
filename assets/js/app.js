@@ -5,7 +5,8 @@ $(document).ready(function () {
     var map;
     var userStatus = false;
     var panelStatus = false;
-
+    var uid;
+    var user;
     statusChecker();
 
     // SLIDEOUT MENU
@@ -97,12 +98,30 @@ $(document).ready(function () {
             statusChecker(true), false;
             var email_id = user.email;
             var editGreeting = $("#userCard").text("Welcome User : " + user.email);
+            var testId = user.uid;
+            tester();
+            groups();
+            function tester() {
+                db.ref("user").child(testId).once('value', function (snapshot) {
+                    if (snapshot.exists()) {
+                        console.log("firebase user " + user.displayName + " exist");
+                    } else {
+                        console.log("created " + user.displayName + "'s Firebase data");
+                        db.ref("user").child(testId).set({
+                            userName: user.displayName,
+                            email: user.email,
+                            userId: user.uid
+                        });
+                    }
+                });
+            }
         } else {
             // No user is signed in.
             console.log("No user detected, Please sign in.");
             statusChecker(false, false);
         }
     });
+
 
     // sign up function
     function signUp() {
@@ -111,28 +130,25 @@ $(document).ready(function () {
         var userEmail = $("#formEmail").val().trim();
         var userPass = $("#formPassword").val().trim();
         var confirmPass = $("#formConfirmPassword").val().trim();
-        userName = $("#formUsername").val().trim();
+        var userName = $("#formUsername").val().trim();
         console.log(userEmail);
 
         if (userPass !== confirmPass) {
             alert("Sorry! your passwords do not match, please fix them to continue")
         } else {
-            firebase.auth().createUserWithEmailAndPassword(userEmail, userPass)
-                .then(function () {
-                    signInAuth()
-                }).catch(function (error) {
-                    //TODO: had to put user display name assigning here due to asynchronous issues will tidy up later
-                    firebase.auth().currentUser.updateProfile({
-                        displayName: userName,
-                    }).then(function () {
-                        //   console.log(user.userName);
-                    });
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log("CreateUserError : " + errorMessage);
-                    // signInAuth();
-                });
+            firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function() {
+                signInAuth();
+            }).catch(function (error) {
+                //TODO: had to put user display name assigning here due to asynchronous issues will tidy up later
+                firebase.auth().currentUser.updateProfile({
+                    displayName: userName,
+                })
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log("CreateUserError : " + errorMessage);
+                // signInAuth();
+            });
         }
     }
 
@@ -165,6 +181,52 @@ $(document).ready(function () {
         firebase.auth().signOut();
         statusChecker(true, false);
     }
+
+    function groups() {
+        function iterate(data) {
+            console.log("injasbfkjasfbkweb");
+            $(".clearStuff").remove();
+
+            var userGroups = data.val();
+
+            //stores each branch in the "newTrain" node to an array
+            var keys = Object.keys(userGroups);
+            console.log(keys);
+            //iterates through each branch in the "newTrain" node using keys
+            for (var i = 0; i < keys.length; i++) {
+                var k = keys[i];
+                console.log(keys);
+                //creating temp vars to store input from current data OBJ
+                // var tName = trains[k].trainName;
+                // var tFrq = trains[k].trainFrq;
+                // var tTime = trains[k].trainTime;
+                // var dest = trains[k].dest;
+                console.log("in");
+            };
+        }
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     function newLocation() {
@@ -239,7 +301,7 @@ $(document).ready(function () {
 
     };
 
-    function findPlaces () {
+    function findPlaces() {
 
         var parameters = {
             location: centerPoint,
@@ -248,10 +310,10 @@ $(document).ready(function () {
         }
 
         placesSearch = new google.maps.places.PlacesService(map);
-        placesSearch.nearbySearch(parameters, function(res){
+        placesSearch.nearbySearch(parameters, function (res) {
             console.log(res);
 
-            for (var i=0; i <= 4; i++){
+            for (var i = 0; i <= 4; i++) {
                 var newMarker = new google.maps.Marker({ position: res[i].geometry.location });
                 newMarker.setMap(map);
             };
