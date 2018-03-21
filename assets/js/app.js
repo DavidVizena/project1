@@ -241,7 +241,15 @@ $(document).ready(function () {
 
     function findPlaces () {
 
-        var parameters = {
+        $.ajax({
+            method: 'GET',
+            url: 'https://developers.zomato.com/api/v2.1/geocode?lat=30&lon=-95',
+            headers: {'user-key' : '9b0f7f04f6701a9e6b5c0b40c2a61b80'},
+        }).then(function(res){
+            console.log(res);
+        })
+
+       /*  var parameters = {
             location: centerPoint,
             radius: 1000,
             type: ['restaurant']
@@ -255,15 +263,13 @@ $(document).ready(function () {
                 var newMarker = new google.maps.Marker({ position: res[i].geometry.location });
                 newMarker.setMap(map);
             };
-        });
+        }); */
 
     };
 
 
 
 
-    // var service = new google.maps.places.PlacesService(centerPoint);
-    // console.log(services);
 
 
     function makeMap() {
