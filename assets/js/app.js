@@ -9,13 +9,6 @@ $(document).ready(function () {
     var user;
     statusChecker();
 
-    // SLIDEOUT MENU
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-        $(this).toggleClass('active');
-    });
-    // 
-
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",
@@ -43,6 +36,7 @@ $(document).ready(function () {
             $("#signUpBtn").hide();
             $("#loginBtn").hide();
             $("#signInBtn").hide();
+            $("#meNav").show();
         } else if (!userStatus) {
             $("#homeSection").show();
             $("#userCard").text("Sign Up Today");
@@ -55,6 +49,7 @@ $(document).ready(function () {
             $("#signUpBtn").show();
             $("#loginBtn").hide();
             $("#signInBtn").show();
+            $("#meNav").hide();
 
         }
 

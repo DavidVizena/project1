@@ -183,7 +183,59 @@ body {
 
 #switch:checked~.body {
     left: 10%;
-    transform: matrix3d(0.62, 0, 0.00, -.0002, 0.00, 0.7, 0.00, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+   
+}
+
+.sideMeNav {
+    width: 275px;
+    height: 100%;
+    top: 6.65%;
+    background: #333;
+    opacity: .9;
+    position: fixed;
+    z-index: 99;
+    transition: 1s;
+    overflow: auto;
+    right: -275px;
+}
+
+.sideMeNav a {
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #fff;
+    display: block;
+    transition: .5s;
+}
+
+.sideMeNav a:hover {
+    color: #ee7b3c;
+}
+
+.sideMeNav .btnClose {
+    position: absolute;
+    z-index: 15;
+    top: 0;
+    right: 22px;
+    font-size: 36;
+    margin-left: 50px;
+}
+
+#sideMeMenu span {
+    text-align: right;
+}
+
+#meSwitch {
+    display: none;
+}
+
+#meSwitch:checked~.sideMeNav {
+    right: 0px;
+}
+
+#meSwitch:checked~.body {
+    right: 10%;
+    
 }
 
 /*  */
