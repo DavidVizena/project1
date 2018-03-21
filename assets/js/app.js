@@ -241,10 +241,17 @@ $(document).ready(function () {
 
     function findPlaces () {
 
+        console.log(centerPoint.lat, centerPoint.lng);
+
         $.ajax({
             method: 'GET',
-            url: 'https://developers.zomato.com/api/v2.1/geocode?lat=30&lon=-95',
+            url: 'https://developers.zomato.com/api/v2.1/search',
             headers: {'user-key' : '9b0f7f04f6701a9e6b5c0b40c2a61b80'},
+            data: {
+                lat: centerPoint.lat,
+                lon: centerPoint.lng,
+                radius: 1000,
+            }
         }).then(function(res){
             console.log(res);
         })
