@@ -290,10 +290,10 @@ $(document).ready(function () {
                 "cache-control": "no-cache"
             },
             data: {
-                term: 'restaurant',
                 latitude: centerPoint.lat,
                 longitude: centerPoint.lng,
-                radius: 2000
+                radius: 2000,
+                categories: 'cafes[US]'
             }
 
         }).then(function (res) {
