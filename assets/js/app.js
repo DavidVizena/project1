@@ -34,11 +34,11 @@ $(document).ready(function () {
         if (userStatus) {
             var logoutBtn = $("#logoutBtn").show();
             $("#homeSection").fadeOut(1000, function () {
-                $("body").css({"overflow-y" : "hidden"});
-                $("body").css({"max-height" : "500px"});
-                $("body").css({"transition-property" : "all"});
-                $("body").css({"transition-duration" : ".5s"});
-                $("body").css({"transition-timing-function" : "cubic-bezier(0, 1, 0.5, 1)"});
+                $("body").css({ "overflow-y": "hidden" });
+                $("body").css({ "max-height": "500px" });
+                $("body").css({ "transition-property": "all" });
+                $("body").css({ "transition-duration": ".5s" });
+                $("body").css({ "transition-timing-function": "cubic-bezier(0, 1, 0.5, 1)" });
                 $(this).hide();
             });
             $("#userP").hide();
@@ -256,33 +256,15 @@ $(document).ready(function () {
             method: 'GET',
             url: 'https://developers.zomato.com/api/v2.1/geocode?lat=30&lon=-95',
             headers: { 'user-key': '9b0f7f04f6701a9e6b5c0b40c2a61b80' },
-        }).then(function (res) {
-            url: 'https://developers.zomato.com/api/v2.1/search',
-            headers: {'user-key' : '9b0f7f04f6701a9e6b5c0b40c2a61b80'},
             data: {
                 lat: centerPoint.lat,
                 lon: centerPoint.lng,
-                radius: 1000,
             }
-        }).then(function(res){
-            console.log(res);
-        })
 
-        /*  var parameters = {
-             location: centerPoint,
-             radius: 1000,
-             type: ['restaurant']
-         }
- 
-         placesSearch = new google.maps.places.PlacesService(map);
-         placesSearch.nearbySearch(parameters, function(res){
-             console.log(res);
- 
-             for (var i=0; i <= 4; i++){
-                 var newMarker = new google.maps.Marker({ position: res[i].geometry.location });
-                 newMarker.setMap(map);
-             };
-         }); */
+        }).then(function (res) {
+            for (var i=0; i<+4; i++){
+                
+            }
 
     };
 
