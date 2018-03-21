@@ -33,14 +33,7 @@ $(document).ready(function () {
         panelStatus = activator2;
         if (userStatus) {
             var logoutBtn = $("#logoutBtn").show();
-            $("#homeSection").fadeOut(1000, function () {
-                $("body").css({"overflow-y" : "hidden"});
-                $("body").css({"max-height" : "500px"});
-                $("body").css({"transition-property" : "all"});
-                $("body").css({"transition-duration" : ".5s"});
-                $("body").css({"transition-timing-function" : "cubic-bezier(0, 1, 0.5, 1)"});
-                $(this).hide();
-            });
+            $("#homeSection").hide("slide");
             $("#userP").hide();
             $("#formEmail").hide();
             $("#formPassword").hide();
@@ -254,20 +247,14 @@ $(document).ready(function () {
 
         $.ajax({
             method: 'GET',
-<<<<<<< HEAD
-            url: 'https://developers.zomato.com/api/v2.1/geocode?lat=30&lon=-95',
-            headers: { 'user-key': '9b0f7f04f6701a9e6b5c0b40c2a61b80' },
-        }).then(function (res) {
-=======
             url: 'https://developers.zomato.com/api/v2.1/search',
-            headers: {'user-key' : '9b0f7f04f6701a9e6b5c0b40c2a61b80'},
+            headers: { 'user-key': '9b0f7f04f6701a9e6b5c0b40c2a61b80' },
             data: {
                 lat: centerPoint.lat,
                 lon: centerPoint.lng,
                 radius: 1000,
             }
-        }).then(function(res){
->>>>>>> 769bd724e25695b77661179c827fe356794f5ca1
+        }).then(function (res) {
             console.log(res);
         })
 
