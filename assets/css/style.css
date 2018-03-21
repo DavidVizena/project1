@@ -186,6 +186,8 @@ body {
    
 }
 
+/* Me SLIDEOUT */
+
 .sideMeNav {
     width: 275px;
     height: 100%;
@@ -196,7 +198,7 @@ body {
     z-index: 99;
     transition: 1s;
     overflow: auto;
-    right: 550px;
+    right: -275px;
 }
 
 .sideMeNav a {
@@ -237,7 +239,6 @@ body {
     right: 10%;
     
 }
-
 /*  */
 
 /*  */
