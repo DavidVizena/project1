@@ -252,27 +252,27 @@ $(document).ready(function () {
             data: {
                 lat: centerPoint.lat,
                 lon: centerPoint.lng,
-                radius: 1000,
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ccf03b8eb976e91cd2b0946741f7f772df2a3750
         }).then(function (res) {
             console.log(res);
-        })
 
-        /*  var parameters = {
-             location: centerPoint,
-             radius: 1000,
-             type: ['restaurant']
-         }
- 
-         placesSearch = new google.maps.places.PlacesService(map);
-         placesSearch.nearbySearch(parameters, function(res){
-             console.log(res);
- 
-             for (var i=0; i <= 4; i++){
-                 var newMarker = new google.maps.Marker({ position: res[i].geometry.location });
-                 newMarker.setMap(map);
-             };
-         }); */
+            for (var i=0; i<=4; i++){
+                var results = res.restaurants[i].restaurant.location;
+                console.log(results);
+                var resultLat = results.latitude;
+                var resultLong = results.longitude;
+
+                var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
+
+                var newMarker = new google.maps.Marker({position: resultLatLong});
+                newMarker.setMap(map);
+            };
+
+        });
 
     };
 
