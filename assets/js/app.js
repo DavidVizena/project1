@@ -253,10 +253,6 @@ $(document).ready(function () {
                 lat: centerPoint.lat,
                 lon: centerPoint.lng,
             }
-<<<<<<< HEAD
-=======
-
->>>>>>> ccf03b8eb976e91cd2b0946741f7f772df2a3750
         }).then(function (res) {
             console.log(res);
 
