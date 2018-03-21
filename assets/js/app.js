@@ -7,6 +7,7 @@ $(document).ready(function () {
     var panelStatus = false;
     var uid;
     var user;
+    
     statusChecker();
 
     // SLIDEOUT MENU
@@ -19,6 +20,7 @@ $(document).ready(function () {
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",
+
         authDomain: "huddle-meet-up.firebaseapp.com",
         databaseURL: "https://huddle-meet-up.firebaseio.com",
         projectId: "huddle-meet-up",
@@ -102,13 +104,14 @@ $(document).ready(function () {
             var editGreeting = $("#userCard").text("Welcome User : " + user.email);
             var testId = user.uid;
             tester();
-            groups();
+
             function tester() {
                 db.ref("user").child(testId).once('value', function (snapshot) {
                     if (snapshot.exists()) {
-                        console.log("firebase user " + user.displayName + " exist");
+                        console.log("user " + user.displayName + " exist in Database");
+                        submitData();
                     } else {
-                        console.log("created " + user.displayName + "'s Firebase data");
+                        console.log("Created " + user.displayName + "'s Firebase data");
                         db.ref("user").child(testId).set({
                             userName: user.displayName,
                             email: user.email,
@@ -138,8 +141,14 @@ $(document).ready(function () {
         if (userPass !== confirmPass) {
             alert("Sorry! your passwords do not match, please fix them to continue")
         } else {
-            firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function() {
-                signInAuth();
+            firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function () {
+                firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log("SignInError : " + errorMessage);
+                    console.log("cool");
+                });
             }).catch(function (error) {
                 //TODO: had to put user display name assigning here due to asynchronous issues will tidy up later
                 firebase.auth().currentUser.updateProfile({
@@ -152,16 +161,6 @@ $(document).ready(function () {
                 // signInAuth();
             });
         }
-    }
-
-    function signInAuth() {
-        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log("SignInError : " + errorMessage);
-            console.log("cool");
-        });
     }
 
     // login function
@@ -184,52 +183,33 @@ $(document).ready(function () {
         statusChecker(true, false);
     }
 
-    function groups() {
-        function iterate(data) {
-            console.log("injasbfkjasfbkweb");
-            $(".clearStuff").remove();
-
-            var userGroups = data.val();
-
-            //stores each branch in the "newTrain" node to an array
-            var keys = Object.keys(userGroups);
-            console.log(keys);
-            //iterates through each branch in the "newTrain" node using keys
-            for (var i = 0; i < keys.length; i++) {
-                var k = keys[i];
-                console.log(keys);
-                //creating temp vars to store input from current data OBJ
-                // var tName = trains[k].trainName;
-                // var tFrq = trains[k].trainFrq;
-                // var tTime = trains[k].trainTime;
-                // var dest = trains[k].dest;
-                console.log("in");
-            };
-        }
-
-    };
 
 
 
+    function submitData() {
+        var ref = db.ref("user");
+        ref.on("value", getData);
+    }
 
 
+    function getData(data) {
+        $(".clearStuff").remove();
 
+        var userGroups = data.val();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //stores each branch in the "newTrain" node to an array
+        var keys = Object.keys(userGroups);
+        console.log(keys);
+        //iterates through each branch in the "newTrain" node using keys
+        for (var i = 0; i < keys.length; i++) {
+            var k = keys[i];
+            //creating temp vars to store input from current data OBJ
+            // var tName = trains[k].trainName;
+            // var tFrq = trains[k].trainFrq;
+            // var tTime = trains[k].trainTime;
+            // var dest = trains[k].dest;
+        };
+    }
 
     function newLocation() {
 
@@ -307,14 +287,6 @@ $(document).ready(function () {
 
         console.log(centerPoint.lat, centerPoint.lng);
 
-<<<<<<< HEAD
-        placesSearch = new google.maps.places.PlacesService(map);
-        placesSearch.nearbySearch(parameters, function (res) {
-            console.log(res);
-
-            for (var i = 0; i <= 4; i++) {
-                var newMarker = new google.maps.Marker({ position: res[i].geometry.location });
-=======
         $.ajax({
             method: 'GET',
             url: 'https://developers.zomato.com/api/v2.1/search',
@@ -326,7 +298,7 @@ $(document).ready(function () {
         }).then(function (res) {
             console.log(res);
 
-            for (var i=0; i<=4; i++){
+            for (var i = 0; i <= 4; i++) {
                 var results = res.restaurants[i].restaurant.location;
                 console.log(results);
                 var resultLat = results.latitude;
@@ -334,8 +306,7 @@ $(document).ready(function () {
 
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
-                var newMarker = new google.maps.Marker({position: resultLatLong});
->>>>>>> 95299c1b8bf87ae84899b033ffb337af1e693534
+                var newMarker = new google.maps.Marker({ position: resultLatLong });
                 newMarker.setMap(map);
             };
 
