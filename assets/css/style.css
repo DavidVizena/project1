@@ -85,10 +85,12 @@ body {
 
 #addedLocations {
     border: 1px solid #ced4da;
+    background-color: #fff;
     border-radius: .25rem;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    min-width: 100%;
 }
 
 
@@ -137,7 +139,7 @@ body {
 .sideNav {
     width: 275px;
     height: 100%;
-    top: 6.3%;
+    top: 6.65%;
     background: #333;
     opacity: .9;
     position: fixed;
