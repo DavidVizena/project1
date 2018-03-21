@@ -138,7 +138,7 @@ $(document).ready(function () {
         if (userPass !== confirmPass) {
             alert("Sorry! your passwords do not match, please fix them to continue")
         } else {
-            firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function() {
+            firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function () {
                 signInAuth();
             }).catch(function (error) {
                 //TODO: had to put user display name assigning here due to asynchronous issues will tidy up later
@@ -308,27 +308,38 @@ $(document).ready(function () {
         console.log(centerPoint.lat, centerPoint.lng);
 
         $.ajax({
-            method: 'GET',
+            method: 'Get',
+            url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=40.82783908257346&longitude=-74.10162448883057",
+            headers: {
+                "authorization": "Bearer kRyV3p6ITp77dDn2qY87bfRkXQ13FegYRNJ7v_GIQG-yGhqmzZLwahMQVAijbo8g16B5Sui5I2MczThm65HstDjDvyApeQnlWKaNK-ddIoIa1xF2nvEA5GkGYjmtWnYx",
+                "cache-control": "no-cache",
+            }
+
+
+
+
+            /* method: 'GET',
             url: 'https://developers.zomato.com/api/v2.1/search',
             headers: { 'user-key': '9b0f7f04f6701a9e6b5c0b40c2a61b80' },
             data: {
                 lat: centerPoint.lat,
-                lon: centerPoint.lng,
-            }
+                lon: centerPoint.lng, */
         }).then(function (res) {
             console.log(res);
-
-            for (var i=0; i<=4; i++){
-                var results = res.restaurants[i].restaurant.location;
-                console.log(results);
-                var resultLat = results.latitude;
-                var resultLong = results.longitude;
-
-                var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
-
-                var newMarker = new google.maps.Marker({position: resultLatLong});
-                newMarker.setMap(map);
-            };
+            /* 
+                        for (var i=0; i<=4; i++){
+                            var results = res.restaurants[i].restaurant.location;
+                            console.log(results);
+                            var resultLat = results.latitude;
+                            var resultLong = results.longitude;
+            
+                            var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
+            
+                            var newMarker = new google.maps.Marker({position: resultLatLong});
+                            newMarker.setMap(map);
+                        };
+            
+                    }); */
 
         });
 
