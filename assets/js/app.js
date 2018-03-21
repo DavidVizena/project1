@@ -307,14 +307,6 @@ $(document).ready(function () {
 
         console.log(centerPoint.lat, centerPoint.lng);
 
-<<<<<<< HEAD
-        placesSearch = new google.maps.places.PlacesService(map);
-        placesSearch.nearbySearch(parameters, function (res) {
-            console.log(res);
-
-            for (var i = 0; i <= 4; i++) {
-                var newMarker = new google.maps.Marker({ position: res[i].geometry.location });
-=======
         $.ajax({
             method: 'GET',
             url: 'https://developers.zomato.com/api/v2.1/search',
@@ -335,7 +327,6 @@ $(document).ready(function () {
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
                 var newMarker = new google.maps.Marker({position: resultLatLong});
->>>>>>> 95299c1b8bf87ae84899b033ffb337af1e693534
                 newMarker.setMap(map);
             };
 
