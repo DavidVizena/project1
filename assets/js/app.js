@@ -8,13 +8,6 @@ $(document).ready(function () {
 
     statusChecker();
 
-    // SLIDEOUT MENU
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-        $(this).toggleClass('active');
-    });
-    // 
-
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",
@@ -42,6 +35,7 @@ $(document).ready(function () {
             $("#signUpBtn").hide();
             $("#loginBtn").hide();
             $("#signInBtn").hide();
+            $("#meNav").show();
         } else if (!userStatus) {
             $("#homeSection").show();
             $("#userCard").text("Sign Up Today");
@@ -54,6 +48,7 @@ $(document).ready(function () {
             $("#signUpBtn").show();
             $("#loginBtn").hide();
             $("#signInBtn").show();
+            $("#meNav").hide();
 
         }
 
@@ -253,10 +248,6 @@ $(document).ready(function () {
                 lat: centerPoint.lat,
                 lon: centerPoint.lng,
             }
-<<<<<<< HEAD
-=======
-
->>>>>>> ccf03b8eb976e91cd2b0946741f7f772df2a3750
         }).then(function (res) {
             console.log(res);
 

@@ -36,6 +36,8 @@
 <!-- BUTTON FOR POPOUT SIDE MENU -->
 <input type="checkbox" name="switch" id="switch">
 <!--  -->
+<!-- Me button popout side menu -->
+<input type="checkbox" name="meSwitch" id="meSwitch">
 
 <body id="home">
 
@@ -66,11 +68,14 @@
                     <li class="nav-item">
                         <a href="#shareHeadSection" class="nav-link">Share</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id="meNav">Me</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-
+<!-- group slide out -->
     <div id="sideMenu" class="sideNav">
         <div id="sideContentWrapper">
             <ul>
@@ -101,6 +106,36 @@
         </div>
     </div>
     <!--  -->
+    <!-- Profile slide out -->
+    <div id="meMenu" class="sideMeNav">
+            <div id="meContentWrapper">
+                <ul>
+                    <li>
+                        <a href="#">
+                        <label for="meSwitch" class="btn btnClose">&cross;</label>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-plus"></i>
+                            <span>Test group #1</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-plus"></i>
+                            <span>Test group #2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-plus"></i>
+                            <span>Test group #3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
     <!-- HOME SECTION -->
     <header id="homeSection">
@@ -293,6 +328,7 @@
             <div class="row">
                 <div class="col text-center">
                     <div class="p-5">
+                        <br>
                         <h1 class="display-4">Create Groups</h1>
                         <p class="lead">Create groups for you and your friends to meet up. Our groups will show the current position of you
                             and your friends, hotspots around all members of your group, and mid points for meetups so none
@@ -343,6 +379,7 @@
             <div class="row">
                 <div class="col text-center">
                     <div class="p-5">
+                        <br>
                         <h1 class="display-4">Share</h1>
                         <p class="lead">Share your experiences like never before. The ability to chat with your huddle and tell them what
                             you are doing and where you are going has never been so easy!</p>
