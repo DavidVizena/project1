@@ -34,6 +34,7 @@ $(document).ready(function () {
         panelStatus = activator2;
         if (userStatus) {
             var logoutBtn = $("#logoutBtn").show();
+            $("#homeSection").hide("slide");
             $("#userP").hide();
             $("#formEmail").hide();
             $("#formPassword").hide();
@@ -43,6 +44,7 @@ $(document).ready(function () {
             $("#loginBtn").hide();
             $("#signInBtn").hide();
         } else if (!userStatus) {
+            $("#homeSection").show();
             $("#userCard").text("Sign Up Today");
             $("#logoutBtn").hide();
             $("#userP").show();
@@ -303,20 +305,40 @@ $(document).ready(function () {
 
     function findPlaces() {
 
-        var parameters = {
-            location: centerPoint,
-            radius: 1000,
-            type: ['restaurant']
-        }
+        console.log(centerPoint.lat, centerPoint.lng);
 
+<<<<<<< HEAD
         placesSearch = new google.maps.places.PlacesService(map);
         placesSearch.nearbySearch(parameters, function (res) {
             console.log(res);
 
             for (var i = 0; i <= 4; i++) {
                 var newMarker = new google.maps.Marker({ position: res[i].geometry.location });
+=======
+        $.ajax({
+            method: 'GET',
+            url: 'https://developers.zomato.com/api/v2.1/search',
+            headers: { 'user-key': '9b0f7f04f6701a9e6b5c0b40c2a61b80' },
+            data: {
+                lat: centerPoint.lat,
+                lon: centerPoint.lng,
+            }
+        }).then(function (res) {
+            console.log(res);
+
+            for (var i=0; i<=4; i++){
+                var results = res.restaurants[i].restaurant.location;
+                console.log(results);
+                var resultLat = results.latitude;
+                var resultLong = results.longitude;
+
+                var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
+
+                var newMarker = new google.maps.Marker({position: resultLatLong});
+>>>>>>> 95299c1b8bf87ae84899b033ffb337af1e693534
                 newMarker.setMap(map);
             };
+
         });
 
     };
@@ -324,8 +346,6 @@ $(document).ready(function () {
 
 
 
-    // var service = new google.maps.places.PlacesService(centerPoint);
-    // console.log(services);
 
 
     function makeMap() {
