@@ -254,7 +254,7 @@ $(document).ready(function () {
 
         $.ajax({
             method: 'GET',
-            url: 'https://developers.zomato.com/api/v2.1/geocode?lat=30&lon=-95',
+            url: 'https://developers.zomato.com/api/v2.1/search',
             headers: { 'user-key': '9b0f7f04f6701a9e6b5c0b40c2a61b80' },
             data: {
                 lat: centerPoint.lat,
@@ -262,9 +262,21 @@ $(document).ready(function () {
             }
 
         }).then(function (res) {
-            for (var i=0; i<+4; i++){
-                
-            }
+            console.log(res);
+
+            for (var i=0; i<=4; i++){
+                var results = res.restaurants[i].restaurant.location;
+                console.log(results);
+                var resultLat = results.latitude;
+                var resultLong = results.longitude;
+
+                var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
+
+                var newMarker = new google.maps.Marker({position: resultLatLong});
+                newMarker.setMap(map);
+            };
+
+        });
 
     };
 
