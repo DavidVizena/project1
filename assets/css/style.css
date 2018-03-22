@@ -30,7 +30,7 @@ body {
 .pathLogo{
     stroke: #fff;
     fill: #fff;
-    stroke-dasharray: 2700;
+    stroke-dasharray: 3200;
     opacity: 10;
     animation: animate 3s cubic-bezier(0,0.23,1,.1)
 }
@@ -39,12 +39,12 @@ body {
     0%{
         opacity: 0;
         fill: none;
-        stroke-dashoffset: 2700;
+        stroke-dashoffset: 3200;
     }
     30%{
         opacity: 10;
         fill: none;
-        stroke-dashoffset: 2700;
+        stroke-dashoffset: 3200;
     }
     90%{
         fill: rgba(255, 255, 255, 0)(red, green, blue)
