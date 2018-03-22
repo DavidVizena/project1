@@ -64,6 +64,20 @@ $(document).ready(function () {
     sr.reveal('#mainFooter', {
         move: 0
     });
+
+    $('a[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $(' [name' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+                return false;
+            }
+        }
+    })
+
     // 
 
 
@@ -159,12 +173,12 @@ $(document).ready(function () {
             var email_id = user.email;
             var editGreeting = $("#userCard").text("Welcome User : " + user.email);
             var testId = user.uid;
-            tester();
+            uidFirebase();
 
-            function tester() {
+            function uidFirebase() {
                 db.ref("user").child(testId).once('value', function (snapshot) {
                     if (snapshot.exists()) {
-                        console.log("user " + user.displayName + " exist in Database");
+                        console.log(user.email + " exist in Database");
                         submitData();
                     } else {
                         console.log("Created " + user.displayName + "'s Firebase data");
@@ -186,7 +200,6 @@ $(document).ready(function () {
 
     // sign up function
     function signUp() {
-
         // grabs data from input fields
         var userEmail = $("#formEmail").val().trim();
         var userPass = $("#formPassword").val().trim();
@@ -198,18 +211,18 @@ $(document).ready(function () {
             alert("Sorry! your passwords do not match, please fix them to continue")
         } else {
             firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function () {
-                firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
+
+                firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function(){
+                    firebase.auth().currentUser.updateProfile({
+                        displayName: userName,
+                    })
+                }).catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     console.log("SignInError : " + errorMessage);
-                    console.log("cool");
                 });
-            }).catch(function (error) {
-                //TODO: had to put user display name assigning here due to asynchronous issues will tidy up later
-                firebase.auth().currentUser.updateProfile({
-                    displayName: userName,
-                })
+            }).catch(function (error) {                
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
@@ -249,66 +262,29 @@ $(document).ready(function () {
         var userGroups = data.val();
         //stores each branch in the "newTrain" node to an array
         var keys = Object.keys(userGroups);
-        console.log(keys);
         //iterates through each branch in the "newTrain" node using keys
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
         };
     }
 
-    // $("#createGroup").on("click", function () {
-    //     var user = firebase.auth().currentUser;
-    //     var gData = "gData";
-    //     // var idRef = db.ref("user").child(user.uid);
-    //     // var akad = idRef.child("gdata");
-    //     // // var res = str.split(",");
-    //     var stuff = {
-    //         gName: $("#groupName").val().trim(),
-    //         gMembers: $("#groupMembers").val().trim().split(",")
-    //     }
-    //     // idRef.push({
-    //     //     gData
-    //     // });
-    //     var idRef = db.ref("user").child(user.uid);
-    //     // var akad = idRef.child("gdata");
-    //     idRef.child("gdata").once('value', function (snapshot) {
-    //         if (snapshot.exists()) {
-    //             console.log("it exists");
-    //             submitData();
-    //         } else {
-    //             idRef.child(user.id).push({
-    //                 stuff: stuff
-    //             });
-    //         }
-    //     });
-    //     console.log(user.uid);
 
-    // });
 
-    function newnew() {
+    $("#createGroup").on("click", function () {
+        var user = firebase.auth().currentUser;
         var idRef = db.ref("user").child(user.uid);
-        var akad = idRef.child("gdata");
-        idRef.child(akad).once('value', function (snapshot) {
-            if (snapshot.exists()) {
-                console.log("it exists");
-                submitData();
-            } else {
-                idRef.child(akad).set({
-                    gData: gData
-                });
-            }
+        var dataRef = idRef.child("gdata");
+        var gName = $("#groupName").val().trim()
+        var gMembers = $("#groupMembers").val().trim().split(",")
+        idRef.push({
+            gName
         });
-    }
+        console.log(user.uid);
 
-
-
-
-
+    });
 
     function newLocation() {
-
         event.preventDefault();
-
         // Verify that something has been entered
         if ($('#location').val()) {
 

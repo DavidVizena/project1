@@ -16,6 +16,44 @@ body {
 .navbar {
     border-bottom: #ee7b3c 3px solid;
     opacity: 0.8;
+    padding: 20px;
+}
+
+.logo{
+    position: absolute !important;
+    top: 64% !important;
+    left: 20% !important;
+    transform: translate(280%,-50%) !important;
+    width: 9% !important;
+}
+
+.pathLogo{
+    stroke: #fff;
+    fill: #fff;
+    stroke-dasharray: 2700;
+    opacity: 10;
+    animation: animate 3s cubic-bezier(0,0.23,1,.1)
+}
+
+@keyframes animate {
+    0%{
+        opacity: 0;
+        fill: none;
+        stroke-dashoffset: 2700;
+    }
+    30%{
+        opacity: 10;
+        fill: none;
+        stroke-dashoffset: 2700;
+    }
+    90%{
+        fill: rgba(255, 255, 255, 0)(red, green, blue)
+    }
+    100%{
+        opacity: 10;
+        fill: rgba(255, 255, 255, 1);
+        stroke-dashoffset: 0;
+    }
 }
 
 #homeSection {
@@ -31,6 +69,10 @@ body {
 
 .navbar-brand {
     color: #ee7b3c !important;
+}
+
+#addGroupBtn{
+    margin-top: 8px;
 }
 
 .darkOverlay {
@@ -78,10 +120,33 @@ body {
     font-size: 30px;
 }
 
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-10px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
 #map {
     height: 500px;
     width: 500px;
+    box-sizing: border-box;
+	border: 5px #ee7b3c solid;
+	overflow: hidden;
+	box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+	transform: translatey(0px);
+	animation: float 6s ease-in-out infinite;
 }
+
+
 
 #addedLocations {
     border: 1px solid #ced4da;
@@ -137,7 +202,7 @@ body {
 .sideNav {
     width: 275px;
     height: 100%;
-    top: 6.65%;
+    top: 10%;
     background: #333;
     opacity: .9;
     position: fixed;
@@ -191,7 +256,7 @@ body {
 .sideMeNav {
     width: 275px;
     height: 100%;
-    top: 6.65%;
+    top: 10%;
     background: #333;
     opacity: .9;
     position: fixed;
