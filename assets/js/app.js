@@ -11,7 +11,7 @@ $(document).ready(function () {
     statusChecker();
 
     // SCROLLING ANIMATIONS (FRONT END)
-    window.sr= ScrollReveal();
+    window.sr = ScrollReveal();
     sr.reveal('.navbar', {
         duration: 2000,
         origin: 'bottom'
@@ -43,7 +43,7 @@ $(document).ready(function () {
         duration: 1000,
         origin: 'left',
         distance: '300px'
-    });  sr.reveal('#createRight', {
+    }); sr.reveal('#createRight', {
         duration: 1000,
         origin: 'right',
         distance: '300px'
@@ -64,9 +64,10 @@ $(document).ready(function () {
     sr.reveal('#mainFooter', {
         move: 0
     });
-
-    $('a[href*="#"]:not([href="#"])').click(function(){
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')&& location.hostname == this.hostname) {
+    // 
+    // SLOW SCROOL CODE
+    $('a[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $(' [name' + this.hash.slice(1) + ']');
             if (target.length) {
@@ -77,7 +78,6 @@ $(document).ready(function () {
             }
         }
     })
-
     // 
 
 
