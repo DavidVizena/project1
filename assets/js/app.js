@@ -11,7 +11,7 @@ $(document).ready(function () {
     statusChecker();
 
     // SCROLLING ANIMATIONS (FRONT END)
-    window.sr= ScrollReveal();
+    window.sr = ScrollReveal();
     sr.reveal('.navbar', {
         duration: 2000,
         origin: 'bottom'
@@ -43,7 +43,7 @@ $(document).ready(function () {
         duration: 1000,
         origin: 'left',
         distance: '300px'
-    });  sr.reveal('#createRight', {
+    }); sr.reveal('#createRight', {
         duration: 1000,
         origin: 'right',
         distance: '300px'
@@ -87,15 +87,17 @@ $(document).ready(function () {
         if (userStatus) {
             var logoutBtn = $("#logoutBtn").show();
             $("#homeSection").hide("slide");
-            $("#userP").hide();
-            $("#formEmail").hide();
-            $("#formPassword").hide();
-            $("#formConfirmPassword").hide();
-            $("#formUsername").hide();
-            $("#signUpBtn").hide();
-            $("#loginBtn").hide();
-            $("#signInBtn").hide();
+            // $("#userP").hide();
+            // $("#formEmail").hide();
+            // $("#formPassword").hide();
+            // $("#formConfirmPassword").hide();
+            // $("#formUsername").hide();
+            // $("#signUpBtn").hide();
+            // $("#loginBtn").hide();
+            // $("#signInBtn").hide();
             $("#meNav").show();
+            $("#test").hide();
+            $("#addGroup").show();
         } else if (!userStatus) {
             $("#homeSection").show();
             $("#userCard").text("Sign Up Today");
@@ -109,6 +111,8 @@ $(document).ready(function () {
             $("#loginBtn").hide();
             $("#signInBtn").show();
             $("#meNav").hide();
+            $("#test").show();
+            $("#addGroup").hide();
 
         }
 
@@ -235,33 +239,71 @@ $(document).ready(function () {
         statusChecker(true, false);
     }
 
-
-
-
     function submitData() {
         var ref = db.ref("user");
         ref.on("value", getData);
     }
 
-
     function getData(data) {
         $(".clearStuff").remove();
-
         var userGroups = data.val();
-
         //stores each branch in the "newTrain" node to an array
         var keys = Object.keys(userGroups);
         console.log(keys);
         //iterates through each branch in the "newTrain" node using keys
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
-            //creating temp vars to store input from current data OBJ
-            // var tName = trains[k].trainName;
-            // var tFrq = trains[k].trainFrq;
-            // var tTime = trains[k].trainTime;
-            // var dest = trains[k].dest;
         };
     }
+
+    // $("#createGroup").on("click", function () {
+    //     var user = firebase.auth().currentUser;
+    //     var gData = "gData";
+    //     // var idRef = db.ref("user").child(user.uid);
+    //     // var akad = idRef.child("gdata");
+    //     // // var res = str.split(",");
+    //     var stuff = {
+    //         gName: $("#groupName").val().trim(),
+    //         gMembers: $("#groupMembers").val().trim().split(",")
+    //     }
+    //     // idRef.push({
+    //     //     gData
+    //     // });
+    //     var idRef = db.ref("user").child(user.uid);
+    //     // var akad = idRef.child("gdata");
+    //     idRef.child("gdata").once('value', function (snapshot) {
+    //         if (snapshot.exists()) {
+    //             console.log("it exists");
+    //             submitData();
+    //         } else {
+    //             idRef.child(user.id).push({
+    //                 stuff: stuff
+    //             });
+    //         }
+    //     });
+    //     console.log(user.uid);
+
+    // });
+
+    function newnew() {
+        var idRef = db.ref("user").child(user.uid);
+        var akad = idRef.child("gdata");
+        idRef.child(akad).once('value', function (snapshot) {
+            if (snapshot.exists()) {
+                console.log("it exists");
+                submitData();
+            } else {
+                idRef.child(akad).set({
+                    gData: gData
+                });
+            }
+        });
+    }
+
+
+
+
+
 
     function newLocation() {
 

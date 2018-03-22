@@ -45,11 +45,11 @@
 
     <!-- TOP NAVBAR -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-            <label for="switch" class="btn">
-                <i id="slidePlus" class="fas fa-plus">
-                </i>
-                <span id="addText">ADD A GROUP</span>
-            </label>
+        <label for="switch" class="btn">
+            <i id="slidePlus" class="fas fa-plus">
+            </i>
+            <span id="addText">GROUPS</span>
+        </label>
         </span>
         <div class="container">
             <a href="index.html" class="navbar-brand">Huddle</a>
@@ -77,71 +77,88 @@
             </div>
         </div>
     </nav>
-<!-- group slide out -->
+    <!-- group slide out -->
     <div id="sideMenu" class="sideNav">
         <div id="sideContentWrapper">
-            <ul>
+            <ul id="test">
                 <li>
                     <a href="#">
-                    <label for="switch" class="btn btnClose">&cross;</label>
-                </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-plus"></i>
-                        <span>Test group #1</span>
+                        <label for="switch" class="btn btnClose">&cross;</label>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <i class="fas fa-plus"></i>
-                        <span>Test group #2</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-plus"></i>
-                        <span>Test group #3</span>
+                        <span>Please sign in to create a group!</span>
                     </a>
                 </li>
             </ul>
-        </div>
-    </div>
-    <!--  -->
-    <!-- Profile slide out -->
-    <div id="meMenu" class="sideMeNav">
-            <div id="meContentWrapper">
+            <div id="addGroup">
                 <ul>
                     <li>
                         <a href="#">
-                        <label for="meSwitch" class="btn btnClose">&cross;</label>
-                    </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-plus"></i>
-                            <span>Profile</span>
+                            <label for="switch" class="btn btnClose">&cross;</label>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fas fa-plus"></i>
-                            <span>Settings</span>
-                        </a>
+                        <i class="fas fa-plus"></i>
+                        <div class="form-group">
+                            <small>Group Name</small>
+                            <input type="email" class="form-control" id="groupName" aria-describedby="emailHelp" placeholder="Group1">
+                        </div>
                     </li>
                     <li>
-                        <a href="#">
-                            <!-- <i class="fas fa-plus"></i>
-                            <span>Log out</span> -->
-                            <input id="logoutBtn" type="submit" value="Logout" class="btn btn-outline-light btn-block">
+                        <i class="fas fa-plus"></i>
+                        <div class="form-group">
+                            <small>Group Members</small>
+                            <input type="email" class="form-control" id="groupMembers" aria-describedby="emailHelp" placeholder="Member1,Member2,Member3">
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" id="createGroup">
+                            <i class="fas fa-plus"></i>
+                            <span>Create Group</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
+    </div>
+    <!--  -->
+    <!-- Profile slide out -->
+    <div id="meMenu" class="sideMeNav">
+        <div id="meContentWrapper">
+            <ul>
+                <li>
+                    <a href="#">
+                        <label for="meSwitch" class="btn btnClose">&cross;</label>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-plus"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-plus"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <!-- <i class="fas fa-plus"></i>
+                            <span>Log out</span> -->
+                        <input id="logoutBtn" type="submit" value="Logout" class="btn btn-outline-light btn-block">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <!-- HOME SECTION -->
-    <header id="homeSection">
+    <header id="homeSection" class="hide">
         <div class="darkOverlay">
             <div class="homeInner">
                 <div class="container">
@@ -213,10 +230,12 @@
             <div class="row">
                 <div class="col text-center">
                     <div class="p-5">
-                        <br><h1 class="display-4">Explore</h1>
+                        <br>
+                        <h1 class="display-4">Explore</h1>
                         <p class="lead">Explore the world around you with your friends easily with the ability to see and chat about what
                             the group wants to do. Want to check out a new hot spot in town? Look below to find the hippest
-                            places in your Huddle's area.</p><br>
+                            places in your Huddle's area.</p>
+                        <br>
                     </div>
                 </div>
             </div>
