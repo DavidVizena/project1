@@ -10,6 +10,63 @@ $(document).ready(function () {
 
     statusChecker();
 
+    // SCROLLING ANIMATIONS (FRONT END)
+    window.sr= ScrollReveal();
+    sr.reveal('.navbar', {
+        duration: 2000,
+        origin: 'bottom'
+    });
+    sr.reveal('#homeLeft', {
+        duration: 2000,
+        origin: 'left',
+        distance: '300px'
+    });
+    sr.reveal('#homeRight', {
+        duration: 2000,
+        origin: 'right',
+        distance: '300px'
+    });
+    sr.reveal('#exploreHeadSection', {
+        duration: 2000,
+        origin: 'bottom',
+        distance: '300px'
+    });
+    sr.reveal('#locCol', {
+        duration: 1000,
+        origin: 'right',
+        distance: '300px'
+    });
+    sr.reveal('#createHeadSection', {
+        move: 0
+    });
+    sr.reveal('#createLeft', {
+        duration: 1000,
+        origin: 'left',
+        distance: '300px'
+    });  sr.reveal('#createRight', {
+        duration: 1000,
+        origin: 'right',
+        distance: '300px'
+    });
+    sr.reveal('#shareHeadSection', {
+        move: 0
+    });
+    sr.reveal('#shareLeft', {
+        duration: 1000,
+        origin: 'left',
+        distance: '300px'
+    });
+    sr.reveal('#shareRight', {
+        duration: 1000,
+        origin: 'right',
+        distance: '300px'
+    });
+    sr.reveal('#mainFooter', {
+        move: 0
+    });
+    // 
+
+
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",
