@@ -370,37 +370,29 @@ $(document).ready(function () {
         }).then(function (res) {
             console.log(res);
 
-            $('ol').empty();
             $('#innerCaro').empty();
 
             for (var i = 0; i <= 4; i++) {
                 var results = res.businesses[i];
                 console.log(results);
 
-                var resultLat = result.coordinates.latitude;
-                var resultLong = result.coordinates.longitude;
+                var resultLat = results.coordinates.latitude;
+                var resultLong = results.coordinates.longitude;
 
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
                 var newMarker = new google.maps.Marker({ position: resultLatLong });
                 newMarker.setMap(map);
 
-                var listItem = $('<li>').attr({
-                    'data-target': '#yelpCaro',
-                    'data-slide-to': i,
-                    'id': 'item' + i
-                });
-
-                listItem.appendTo('ol');
-
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');
                 var cardText = $('<div>').addClass('card-body rounded text-center');
-                var info = {
                 
-                
+                var name = $('<h5>').addClass('card-title').text(results.name);
+                var rating = $('<h6>').addClass('card-subtitle mb-2').text(results.rating + ' out of 5 stars')
+                var yelpLink = $('<a>').attr('href', results.url).text('Click here to visit on Yelp');
 
-                info.appendTo(cardText);
+                cardText.append(name, rating, yelpLink);
                 cardText.appendTo(cardInfo);
                 cardInfo.appendTo(cardItem);
                 cardItem.appendTo('#innerCaro');
