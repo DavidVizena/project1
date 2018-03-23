@@ -91,7 +91,7 @@
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 
-        <label for="switch" class="btn" id="addGroupBtn">
+        <!-- <label for="switch" class="btn" id="addGroupBtn">
 
             <i id="slidePlus" class="fas fa-plus">
 
@@ -101,7 +101,7 @@
 
         </label>
 
-        </span>
+        </span> -->
 
         <div class="container">
 
@@ -321,7 +321,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                     <li class="nav-item">
 
-                        <label class="nav-link hide" for="meSwitch" id="meNav" >Me</label>
+                        <label class="nav-link hide" for="meSwitch" id="meNav">Me</label>
 
                     </li>
 
@@ -335,7 +335,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
     <!-- group slide out -->
 
-    <div id="sideMenu" class="sideNav">
+    <!-- <div id="sideMenu" class="sideNav">
 
         <div id="sideContentWrapper">
 
@@ -378,7 +378,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
         </div>
 
-    </div>
+    </div> -->
 
     <!-- -->
 
@@ -462,7 +462,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                             <h1 class="display-4">Create a
 
-                                <strong>Huddle</strong> for you and your friends.</h1>
+                                <strong>Huddle</strong> for you and your friends</h1>
 
                             <div class="d-flex flex-row">
 
@@ -472,7 +472,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                                 </div>
 
-                                <div class="p-4 align-self-end">Huddle offers you the ability to find your friends.
+                                <div class="p-4 align-self-end">Huddle offers you the ability to find your friends!
 
                                 </div>
 
@@ -486,7 +486,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                                 </div>
 
-                                <div class="p-4 align-self-end">Have conversations with group members.
+                                <div class="p-4 align-self-end">Have conversations with group members!
 
 
 
@@ -759,15 +759,14 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                         <br>
 
-                        <h1 class="display-4">Create Groups</h1>
+                        <h1 class="display-4">Chat With Locals</h1>
 
-                        <p class="lead">Create groups for you and your friends to meet up. Our groups will show the current position of you
-                            and your friends, hotspots around all members of your group, and mid points for meetups so none
-                            of your group has to go out of their way to meet up with the other members. Alls fair in love
-                            and travel time!</p>
-
-                        <a href="#" class="btn btn-outline-light">Add a Group</a>
-
+                        <p class="lead">Huddle allows you to chat with people in your local area! Find new friends, meet up with current
+                            acquaintances, or hang with groups of new and old! Huddle can help you chat no matter the situation!
+                            If there are people around you using the app, you can talk to them via our open chat!</p>
+                        <!-- CHAT BOX HERE DONALDDDDDDDD -->
+                        <div class="chatBox" id="chatBox"></div>
+                        <!--  -->
                         <br>
 
                         <br>
@@ -796,9 +795,9 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                 <div id="createLeft" class="col-md-6">
 
-                    <h3>Create Your Huddle</h3>
+                    <h3>Chat Openly With Others</h3>
 
-                    <p>Simply create your Huddle and invite members to get started.</p>
+                    <p>Simply create your Huddle Username to get started.</p>
 
                     <div class="d-flex flex-row">
 
@@ -808,7 +807,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                         </div>
 
-                        <div class="p-4 align-self-end">Invite your friends to join your Huddle!
+                        <div class="p-4 align-self-end">Invite your friends to Huddle Chat with you!
 
                         </div>
 
@@ -867,10 +866,20 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                         <h1 class="display-4">Share</h1>
 
-                        <p class="lead">Share your experiences like never before. The ability to chat with your huddle and tell them what
+                        <p class="lead">Share your experiences like never before. The ability to post about your Huddle and tell others what
                             you are doing and where you are going has never been so easy!</p>
 
-                        <a href="#" class="btn btn-outline-light">Find out more</a>
+                            <div class="links" id="links">
+                                <a href="https://twitter.com/HuddleLocal" target="_blank" class="twitterLink">
+                                    <img id="twitterPic" src="./assets/images/twitterPic.svg" alt="Twitter Image">
+                                </a>
+                                <a href="https://www.facebook.com/huddle.local.7" target="_blank" class="facebookLink">
+                                    <img id="facebookPic" src="./assets/images/facebookPic.svg" alt="Facebook Image">
+                                </a>
+                                <a href="https://www.instagram.com/huddlelocal/" target="_blank" class="githubLink">
+                                    <img id="instaPic" src="./assets/images/instagramPic.svg" alt="Instagram Image">
+                                </a>
+                            </div>
 
                         <br>
 
@@ -919,7 +928,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                         </div>
 
-                        <div class="p-4 align-self-end">Our chat interface allows you to quickly, and easily discuss plans with your other Huddle members.
+                        <div class="p-4 align-self-end">Use the above links to connect with us on all of our social media platforms!
 
                         </div>
 
@@ -933,7 +942,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                         </div>
 
-                        <div class="p-4 align-self-end">Stay up to date with what your friends are doing by chatting with them via our amazing chat interface.</div>
+                        <div class="p-4 align-self-end">Post your status to your other social medias to let your friends know where you will be!</div>
 
                     </div>
 

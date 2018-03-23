@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     var locations = [];
     var center;
@@ -44,7 +43,8 @@ $(document).ready(function () {
         duration: 1000,
         origin: 'left',
         distance: '300px'
-    }); sr.reveal('#createRight', {
+    });
+    sr.reveal('#createRight', {
         duration: 1000,
         origin: 'right',
         distance: '300px'
@@ -68,18 +68,18 @@ $(document).ready(function () {
     // 
 
     // SLOW SCROOL CODE
-    $('a[href*="#"]:not([href="#"])').click(function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $(' [name' + this.hash.slice(1) + ']');
-            if (target.length) {
-                $('html, body').animate({
-                    scrollTop: target.offset().top
-                }, 1000);
-                return false;
-            }
-        }
-    })
+    // $('a[href*="#"]:not([href="#"])').click(function () {
+    //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+    //         var target = $(this.hash);
+    //         target = target.length ? target : $(' [name' + this.hash.slice(1) + ']');
+    //         if (target.length) {
+    //             $('html, body').animate({
+    //                 scrollTop: target.offset().top
+    //             }, 1000);
+    //             return false;
+    //         }
+    //     }
+    // })
     // 
 
 
@@ -319,9 +319,15 @@ $(document).ready(function () {
                 var locationLat = latLong.lat;
                 var locationLong = latLong.lng;
 
-                var locationCordinates = { lat: locationLat, lng: locationLong };
+                var locationCordinates = {
+                    lat: locationLat,
+                    lng: locationLong
+                };
 
-                var newMarker = new google.maps.Marker({ position: locationCordinates });
+                var newMarker = new google.maps.Marker({
+                    animation: google.maps.Animation.DROP,
+                    position: locationCordinates
+                });
 
                 newMarker.setMap(map);
 
@@ -398,20 +404,25 @@ $(document).ready(function () {
 
                 var contentString = "<div> its working </div>";
 
-
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
 
 
-                var newMarker = new google.maps.Marker({ position: resultLatLong });
+                var newMarker = new google.maps.Marker({
+                    animation: google.maps.Animation.DROP,
+                    position: resultLatLong
+                });
                 newMarker.setMap(map);
 
-                newMarker.addListener('click', function () {
-                    infowindow.open(map, newMarker);
-                });
-
-
+                google.maps.event.addListener( newMarker, "click", (
+                    function(newMarker, i){
+                        return function() {
+                            infowindow.open(map, newMarker);
+                        }
+                    }
+                )(newMarker, i));
+            
 
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');
