@@ -118,6 +118,11 @@ body {
     background: #ee7b3c;
 }
 
+.links img{
+    height: 50px;
+    width: 50px;
+}
+
 #exploreCheck {
     color: #fff;
     background: #333;
