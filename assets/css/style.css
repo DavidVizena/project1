@@ -179,7 +179,7 @@ body {
 }
 
 .carousel-indicators .active {
-    background-color: #ee7b3c;
+    background-color: #ee7b3c !important;
 }
 
 */ #shareCheck {
@@ -188,6 +188,23 @@ body {
     padding: 4px;
     border-radius: 5px;
     font-size: 30px;
+}
+
+
+a.carousel-control-prev{
+    color: #ee7b3c !important;
+    background-color: #ee7b3c !important;
+    width: 50px;
+    left: 3.0%;
+    border-radius: 4%;
+}
+
+a.carousel-control-next{
+    color: #ee7b3c !important;
+    background-color: #ee7b3c !important;
+    width: 50px;
+    right: 3.0%;
+    border-radius: 4%;
 }
 
 /* SLIDE OUT FROM LEFT SIDE */
