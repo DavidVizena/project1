@@ -7,6 +7,7 @@ $(document).ready(function () {
     var panelStatus = false;
     var uid;
     var user;
+    var passFix = false;
 
     statusChecker();
 
@@ -64,7 +65,9 @@ $(document).ready(function () {
     sr.reveal('#mainFooter', {
         move: 0
     });
+    // 
 
+    // SLOW SCROOL CODE
     $('a[href*="#"]:not([href="#"])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
@@ -77,14 +80,12 @@ $(document).ready(function () {
             }
         }
     })
-
     // 
 
 
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",
-
         authDomain: "huddle-meet-up.firebaseapp.com",
         databaseURL: "https://huddle-meet-up.firebaseio.com",
         projectId: "huddle-meet-up",
@@ -94,40 +95,21 @@ $(document).ready(function () {
     firebase.initializeApp(config);
     db = firebase.database();
 
+    //calls function to check if a user is logged in or not
     statusChecker();
+
+    //checks if user is logged in or not and displays or removes correct input fields and data
     function statusChecker(activator1, activator2) {
         userStatus = activator1;
         panelStatus = activator2;
         if (userStatus) {
-            var logoutBtn = $("#logoutBtn").show();
-            $("#homeSection").hide("slide");
-            // $("#userP").hide();
-            // $("#formEmail").hide();
-            // $("#formPassword").hide();
-            // $("#formConfirmPassword").hide();
-            // $("#formUsername").hide();
-            // $("#signUpBtn").hide();
-            // $("#loginBtn").hide();
-            // $("#signInBtn").hide();
-            $("#meNav").show();
-            $("#test").hide();
-            $("#addGroup").show();
+            $("#homeSection").css("display", "none")
+            $("#logoutBtn").show();
+            $("#meNav", ).show();
         } else if (!userStatus) {
-            $("#homeSection").show();
             $("#userCard").text("Sign Up Today");
-            $("#logoutBtn").hide();
-            $("#userP").show();
-            $("#formEmail").show();
-            $("#formPassword").show();
-            $("#formConfirmPassword").show();
-            $("#formUsername").show();
-            $("#signUpBtn").show();
-            $("#loginBtn").hide();
-            $("#signInBtn").show();
-            $("#meNav").hide();
-            $("#test").show();
-            $("#addGroup").hide();
-
+            $(".show").show();
+            $(".hide").hide();
         }
 
         if (panelStatus) {
@@ -141,9 +123,14 @@ $(document).ready(function () {
         }
     }
 
+
+
+
     // all buttons used for signIn, logout, and login functionality
     $("#signInBtn").on("click", function (e) {
         e.preventDefault();
+        passFix = true;
+        console.log(passFix)
         statusChecker(false, true);
     });
 
@@ -162,14 +149,27 @@ $(document).ready(function () {
         logout();
     });
 
+    function test() {
+        $("#loginBtn").on("click", function (e) {
+            e.preventDefault();
+            login();
+        });
+    }
+
+
+
+
+    $("#formPassword").on("click", function(){
+        // login();
+    });
+
     // checks the current users state and if anything is changed do something
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             var user = firebase.auth().currentUser;
-            console.log(user);
             console.log("logged in as: " + user.email);
-            statusChecker(true), false;
+            statusChecker(true, false);
             var email_id = user.email;
             var editGreeting = $("#userCard").text("Welcome User : " + user.email);
             var testId = user.uid;
@@ -207,12 +207,14 @@ $(document).ready(function () {
         var userName = $("#formUsername").val().trim();
         console.log(userEmail);
 
-        if (userPass !== confirmPass) {
+        //makes sure password and pass word confirm match
+        if (userPass !== confirmPass && passFix === false) {
             alert("Sorry! your passwords do not match, please fix them to continue")
         } else {
+            //once passwords do match it then creates the user in the auth section of firebase
             firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function () {
-
-                firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function(){
+                //then signs them in with the same credentials
+                firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function () {
                     firebase.auth().currentUser.updateProfile({
                         displayName: userName,
                     })
@@ -222,7 +224,7 @@ $(document).ready(function () {
                     var errorMessage = error.message;
                     console.log("SignInError : " + errorMessage);
                 });
-            }).catch(function (error) {                
+            }).catch(function (error) {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
@@ -232,26 +234,57 @@ $(document).ready(function () {
         }
     }
 
-    // login function
-    function login() {
-        // grabs data from input fields
-        var userEmail = $("#formEmail").val().trim();
-        var userPass = $("#formPassword").val().trim();
-        console.log(userEmail);
-        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log("SignInError : " + errorMessage);
-        });
-    }
+    // function processKey(e)
+    // {
+    //     if (null == e)
+    //         e = window.event ;
+    //     if (e.keyCode == 13)  {
+    //         document.getElementById("loginBtn").click();
+    //         return false;
+    //     }
+    // }
 
+    // login function
+   
+        function login() {
+            passFix = true
+            if (passFix === true) {
+                // grabs data from input fields
+                var userEmail = $("#formEmail").val().trim();
+                var userPass = $("#formPassword").val().trim();
+                console.log(userEmail);
+                firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log("SignInError : " + errorMessage);
+                });
+            }
+        }
+    // function login() {
+    //     passFix = true
+    //     if (passFix === true) {
+    //         // grabs data from input fields
+    //         var userEmail = $("#formEmail").val().trim();
+    //         var userPass = $("#formPassword").val().trim();
+    //         console.log(userEmail);
+    //         firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
+    //             // Handle Errors here.
+    //             var errorCode = error.code;
+    //             var errorMessage = error.message;
+    //             console.log("SignInError : " + errorMessage);
+    //         });
+    //     }
+    // }
     // logout function
     function logout() {
         firebase.auth().signOut();
         statusChecker(true, false);
     }
 
+
+
+    //pushes data to firebase
     function submitData() {
         var ref = db.ref("user");
         ref.on("value", getData);
