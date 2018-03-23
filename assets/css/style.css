@@ -13,6 +13,7 @@ body {
     overflow: auto;
 }
 
+
 .navbar {
     border-bottom: #ee7b3c 3px solid;
     opacity: 0.8;
@@ -140,6 +141,7 @@ body {
     height: 500px;
     width: 500px;
     box-sizing: border-box;
+    border-radius: 5%;
 	border: 5px #ee7b3c solid;
 	overflow: hidden;
 	box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
