@@ -433,6 +433,14 @@ $(document).ready(function () {
 
     $('#submitLocations').on('click', findCenter);
 
+    /* $(document).on('click', '.carousel-control-prev', function(){
+        $('#yelpCaro').carousel('prev');
+    });
+
+    $(document).on('click', '.carousel-control-next', function(){
+        $('#yelpCaro').carousel('next');
+    }); */
+
     makeMap();
 
 
