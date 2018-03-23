@@ -121,6 +121,7 @@ body {
 .links img{
     height: 50px;
     width: 50px;
+    /* background-color: #fff; */
 }
 
 #exploreCheck {
