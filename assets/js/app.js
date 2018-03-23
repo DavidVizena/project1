@@ -348,6 +348,7 @@ $(document).ready(function () {
                 };
 
                 var newMarker = new google.maps.Marker({
+                    animation: google.maps.Animation.DROP,
                     position: locationCordinates
                 });
 
@@ -434,10 +435,15 @@ $(document).ready(function () {
                     position: resultLatLong
                 });
                 newMarker.setMap(map);
-
-                newMarker.addListener("click", function() {
-                    infowindow.open(map, newMarker);
-                })
+                
+                google.maps.event.addListener( newMarker, "click", (
+                    function(newMarker, i){
+                        return function() {
+                            infowindow.open(map, newMarker);
+                        }
+                    }
+                )(newMarker, i));
+            
 
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');
