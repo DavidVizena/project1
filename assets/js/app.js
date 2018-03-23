@@ -363,7 +363,7 @@ $(document).ready(function () {
             data: {
                 latitude: centerPoint.lat,
                 longitude: centerPoint.lng,
-                radius: 2000,
+                radius: 5000,
                 categories: 'cafes[US]'
             }
 
