@@ -400,24 +400,47 @@ $(document).ready(function () {
             data: {
                 latitude: centerPoint.lat,
                 longitude: centerPoint.lng,
-                radius: 2000,
+                radius: 5000,
                 categories: 'cafes[US]'
             }
 
         }).then(function (res) {
             console.log(res);
 
+            $('#innerCaro').empty();
+
             for (var i = 0; i <= 4; i++) {
-                var results = res.businesses[i].coordinates;
+                var results = res.businesses[i];
                 console.log(results);
-                var resultLat = results.latitude;
-                var resultLong = results.longitude;
+
+                var resultLat = results.coordinates.latitude;
+                var resultLong = results.coordinates.longitude;
 
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
                 var newMarker = new google.maps.Marker({ position: resultLatLong });
                 newMarker.setMap(map);
+
+                var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
+                var cardInfo = $('<div>').addClass('card text-center');
+                var cardText = $('<div>').addClass('card-body rounded text-center');
+                
+                var name = $('<h5>').addClass('card-title').text(results.name);
+                var rating = $('<h6>').addClass('card-subtitle mb-2').text(results.rating + ' out of 5 stars')
+                var yelpLink = $('<a>').attr({
+                    'href': results.url,
+                    'target': '_blank'
+                }).text('Click here to visit on Yelp');
+
+                cardText.append(name, rating, yelpLink);
+                cardText.appendTo(cardInfo);
+                cardInfo.appendTo(cardItem);
+                cardItem.appendTo('#innerCaro');
+                
             };
+
+            $('#item0').addClass('active');
+            $('#card0').addClass('active');
 
         });
 
@@ -446,6 +469,14 @@ $(document).ready(function () {
     $('#addLocation').on('click', newLocation);
 
     $('#submitLocations').on('click', findCenter);
+
+    /* $(document).on('click', '.carousel-control-prev', function(){
+        $('#yelpCaro').carousel('prev');
+    });
+
+    $(document).on('click', '.carousel-control-next', function(){
+        $('#yelpCaro').carousel('next');
+    }); */
 
     makeMap();
 
