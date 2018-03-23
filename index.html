@@ -56,6 +56,11 @@
 
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 
+    <!-- alert.js -->
+    <script src="./assets/js/alertify.js"></script>
+    <link rel="stylesheet" href="./assets/css/alertify.css">
+    <link rel="stylesheet" href="./assets/css/default.css">
+
     <!-- PERSONAL JAVASCRIPT SHEET -->
 
     <script src="./assets/js/app.js"></script>
@@ -962,7 +967,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                         <p>Copyright &copy; 2018</p>
 
-                        <button class="btn" data-toggle="modal" data-target="#contactModal">Contact Us</button>
+                        <button class="btn" data-toggle="modal" data-target="#contactModal" id="contactBtn">Contact Us</button>
 
                     </div>
 
@@ -998,13 +1003,26 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                 <div class="modal-body">
 
-                    <form>
+
+                    <!-- <form action="https://formspree.io/your@email.com"
+      method="POST">
+    <input type="text" name="name">
+    <input type="email" name="_replyto">
+    <input type="submit" value="Send">
+</form> -->
+
+
+
+
+
+                    <form action="https://formspree.io/rovch@protonmail.com"
+                    method="POST">
 
                         <div class="form-group">
 
                             <label for="name">Name</label>
 
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="name">
 
                         </div>
 
@@ -1012,7 +1030,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                             <label for="email">Email</label>
 
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" name="_replyto">
 
                         </div>
 
@@ -1020,7 +1038,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                             <label for="message">Message</label>
 
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control" id="contactMessage"></textarea>
 
                         </div>
 
@@ -1029,8 +1047,8 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
                 </div>
 
                 <div class="modal-footer">
-
-                    <button class="btn btn-primary btn-block">Submit</button>
+                    <input class="btn btn-primary btn-block" type="submit" value="Send">
+                    <!-- <button class="btn btn-primary btn-block" id="contactSubmit">Submit</button> -->
 
                 </div>
 

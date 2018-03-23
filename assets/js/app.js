@@ -111,7 +111,6 @@ $(document).ready(function () {
             $(".show").show();
             $(".hide").hide();
         }
-
         if (panelStatus) {
             $("#userCard").text("Login");
             $("#formUsername").hide();
@@ -130,7 +129,20 @@ $(document).ready(function () {
     $("#signInBtn").on("click", function (e) {
         e.preventDefault();
         passFix = true;
-        console.log(passFix)
+        if (passFix) {
+            var input = document.getElementById("formPassword");
+
+            // Execute a function when the user releases a key on the keyboard
+            input.addEventListener("keyup", function (event) {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Number 13 is the "Enter" key on the keyboard
+                if (event.keyCode === 13) {
+                    // Trigger the button element with a click
+                    document.getElementById("loginBtn").click();
+                }
+            });
+        }
         statusChecker(false, true);
     });
 
@@ -147,20 +159,6 @@ $(document).ready(function () {
     $("#logoutBtn").on("click", function (e) {
         e.preventDefault();
         logout();
-    });
-
-    function test() {
-        $("#loginBtn").on("click", function (e) {
-            e.preventDefault();
-            login();
-        });
-    }
-
-
-
-
-    $("#formPassword").on("click", function(){
-        // login();
     });
 
     // checks the current users state and if anything is changed do something
@@ -234,48 +232,20 @@ $(document).ready(function () {
         }
     }
 
-    // function processKey(e)
-    // {
-    //     if (null == e)
-    //         e = window.event ;
-    //     if (e.keyCode == 13)  {
-    //         document.getElementById("loginBtn").click();
-    //         return false;
-    //     }
-    // }
-
     // login function
-   
-        function login() {
-            passFix = true
-            if (passFix === true) {
-                // grabs data from input fields
-                var userEmail = $("#formEmail").val().trim();
-                var userPass = $("#formPassword").val().trim();
-                console.log(userEmail);
-                firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log("SignInError : " + errorMessage);
-                });
-            }
-        }
-    // function login() {
-    //     passFix = true
-    //     if (passFix === true) {
-    //         // grabs data from input fields
-    //         var userEmail = $("#formEmail").val().trim();
-    //         var userPass = $("#formPassword").val().trim();
-    //         console.log(userEmail);
-    //         firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
-    //             // Handle Errors here.
-    //             var errorCode = error.code;
-    //             var errorMessage = error.message;
-    //             console.log("SignInError : " + errorMessage);
-    //         });
-    //     }
-    // }
+    function login() {
+        // grabs data from input fields
+        var userEmail = $("#formEmail").val().trim();
+        var userPass = $("#formPassword").val().trim();
+        console.log(userEmail);
+        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log("SignInError : " + errorMessage);
+        });
+    }
+
     // logout function
     function logout() {
         firebase.auth().signOut();
@@ -302,19 +272,26 @@ $(document).ready(function () {
     }
 
 
+    // $("#contactSubmit").on("click", function (e) {
+    //     var name = $("#contactName").val(),
+    //         email = $("#contactEmail").val(),
+    //         message = $("#contactMessage").val();
 
-    $("#createGroup").on("click", function () {
-        var user = firebase.auth().currentUser;
-        var idRef = db.ref("user").child(user.uid);
-        var dataRef = idRef.child("gdata");
-        var gName = $("#groupName").val().trim()
-        var gMembers = $("#groupMembers").val().trim().split(",")
-        idRef.push({
-            gName
-        });
-        console.log(user.uid);
+    //     if (!name || !email || !message) {
+    //         alertify.error("please check that all inputs are completed!");
+    //     } else {
+    //         $.ajax({
+    //             url: "https://formspree.io/rovch@protonmail.com",
+    //             method: "POST",
+    //             data: $(this).serialize(),
+    //             dataType: "json"
+    //         });
+    //         e.preventDefault()
+    //         alertify.success("Email sent!")
 
-    });
+    //     }
+    // });
+
 
     function newLocation() {
         event.preventDefault();
@@ -406,25 +383,40 @@ $(document).ready(function () {
 
         }).then(function (res) {
             console.log(res);
-
             $('#innerCaro').empty();
 
             for (var i = 0; i <= 4; i++) {
                 var results = res.businesses[i];
                 console.log(results);
 
+
+
                 var resultLat = results.coordinates.latitude;
                 var resultLong = results.coordinates.longitude;
 
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
+                var contentString = "<div> its working </div>";
+
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+
                 var newMarker = new google.maps.Marker({ position: resultLatLong });
                 newMarker.setMap(map);
+
+                newMarker.addListener('click', function () {
+                    infowindow.open(map, newMarker);
+                });
+
+
 
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');
                 var cardText = $('<div>').addClass('card-body rounded text-center');
-                
+
                 var name = $('<h5>').addClass('card-title').text(results.name);
                 var rating = $('<h6>').addClass('card-subtitle mb-2').text(results.rating + ' out of 5 stars')
                 var yelpLink = $('<a>').attr({
@@ -436,7 +428,7 @@ $(document).ready(function () {
                 cardText.appendTo(cardInfo);
                 cardInfo.appendTo(cardItem);
                 cardItem.appendTo('#innerCaro');
-                
+
             };
 
             $('#item0').addClass('active');
