@@ -370,17 +370,45 @@ $(document).ready(function () {
         }).then(function (res) {
             console.log(res);
 
+            $('ol').empty();
+            $('#innerCaro').empty();
+
             for (var i = 0; i <= 4; i++) {
-                var results = res.businesses[i].coordinates;
+                var results = res.businesses[i];
                 console.log(results);
-                var resultLat = results.latitude;
-                var resultLong = results.longitude;
+
+                var resultLat = result.coordinates.latitude;
+                var resultLong = result.coordinates.longitude;
 
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
                 var newMarker = new google.maps.Marker({ position: resultLatLong });
                 newMarker.setMap(map);
+
+                var listItem = $('<li>').attr({
+                    'data-target': '#yelpCaro',
+                    'data-slide-to': i,
+                    'id': 'item' + i
+                });
+
+                listItem.appendTo('ol');
+
+                var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
+                var cardInfo = $('<div>').addClass('card text-center');
+                var cardText = $('<div>').addClass('card-body rounded text-center');
+                var info = {
+                
+                
+
+                info.appendTo(cardText);
+                cardText.appendTo(cardInfo);
+                cardInfo.appendTo(cardItem);
+                cardItem.appendTo('#innerCaro');
+                
             };
+
+            $('#item0').addClass('active');
+            $('#card0').addClass('active');
 
         });
 
