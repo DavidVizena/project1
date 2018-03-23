@@ -390,7 +390,10 @@ $(document).ready(function () {
                 
                 var name = $('<h5>').addClass('card-title').text(results.name);
                 var rating = $('<h6>').addClass('card-subtitle mb-2').text(results.rating + ' out of 5 stars')
-                var yelpLink = $('<a>').attr('href', results.url).text('Click here to visit on Yelp');
+                var yelpLink = $('<a>').attr({
+                    'href': results.url,
+                    'target': '_blank'
+                }).text('Click here to visit on Yelp');
 
                 cardText.append(name, rating, yelpLink);
                 cardText.appendTo(cardInfo);
