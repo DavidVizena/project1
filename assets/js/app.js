@@ -432,10 +432,11 @@ $(document).ready(function () {
 
 
                 var newMarker = new google.maps.Marker({
+                    animation: google.maps.Animation.DROP,
                     position: resultLatLong
                 });
                 newMarker.setMap(map);
-                
+
                 google.maps.event.addListener( newMarker, "click", (
                     function(newMarker, i){
                         return function() {
