@@ -131,7 +131,6 @@ $(document).ready(function () {
         passFix = true;
         if (passFix) {
             var input = document.getElementById("formPassword");
-
             // Execute a function when the user releases a key on the keyboard
             input.addEventListener("keyup", function (event) {
                 // Cancel the default action, if needed
@@ -208,7 +207,7 @@ $(document).ready(function () {
         //makes sure password and pass word confirm match
         if (userPass !== confirmPass && passFix === false) {
             alert("Sorry! your passwords do not match, please fix them to continue")
-        } else {
+        } else  if (passFix === false){
             //once passwords do match it then creates the user in the auth section of firebase
             firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function () {
                 //then signs them in with the same credentials
