@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     var locations = [];
     var center;
@@ -44,7 +43,8 @@ $(document).ready(function () {
         duration: 1000,
         origin: 'left',
         distance: '300px'
-    }); sr.reveal('#createRight', {
+    });
+    sr.reveal('#createRight', {
         duration: 1000,
         origin: 'right',
         distance: '300px'
@@ -68,18 +68,18 @@ $(document).ready(function () {
     // 
 
     // SLOW SCROOL CODE
-    $('a[href*="#"]:not([href="#"])').click(function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $(' [name' + this.hash.slice(1) + ']');
-            if (target.length) {
-                $('html, body').animate({
-                    scrollTop: target.offset().top
-                }, 1000);
-                return false;
-            }
-        }
-    })
+    // $('a[href*="#"]:not([href="#"])').click(function () {
+    //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+    //         var target = $(this.hash);
+    //         target = target.length ? target : $(' [name' + this.hash.slice(1) + ']');
+    //         if (target.length) {
+    //             $('html, body').animate({
+    //                 scrollTop: target.offset().top
+    //             }, 1000);
+    //             return false;
+    //         }
+    //     }
+    // })
     // 
 
 
@@ -159,7 +159,7 @@ $(document).ready(function () {
 
 
 
-    $("#formPassword").on("click", function(){
+    $("#formPassword").on("click", function () {
         // login();
     });
 
@@ -245,22 +245,22 @@ $(document).ready(function () {
     // }
 
     // login function
-   
-        function login() {
-            passFix = true
-            if (passFix === true) {
-                // grabs data from input fields
-                var userEmail = $("#formEmail").val().trim();
-                var userPass = $("#formPassword").val().trim();
-                console.log(userEmail);
-                firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log("SignInError : " + errorMessage);
-                });
-            }
+
+    function login() {
+        passFix = true
+        if (passFix === true) {
+            // grabs data from input fields
+            var userEmail = $("#formEmail").val().trim();
+            var userPass = $("#formPassword").val().trim();
+            console.log(userEmail);
+            firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log("SignInError : " + errorMessage);
+            });
         }
+    }
     // function login() {
     //     passFix = true
     //     if (passFix === true) {
@@ -342,9 +342,14 @@ $(document).ready(function () {
                 var locationLat = latLong.lat;
                 var locationLong = latLong.lng;
 
-                var locationCordinates = { lat: locationLat, lng: locationLong };
+                var locationCordinates = {
+                    lat: locationLat,
+                    lng: locationLong
+                };
 
-                var newMarker = new google.maps.Marker({ position: locationCordinates });
+                var newMarker = new google.maps.Marker({
+                    position: locationCordinates
+                });
 
                 newMarker.setMap(map);
 
@@ -418,13 +423,26 @@ $(document).ready(function () {
 
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
-                var newMarker = new google.maps.Marker({ position: resultLatLong });
+                var contentString = "<div> its working </div>";
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+
+                var newMarker = new google.maps.Marker({
+                    position: resultLatLong
+                });
                 newMarker.setMap(map);
+
+                newMarker.addListener("click", function() {
+                    infowindow.open(map, newMarker);
+                })
 
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');
                 var cardText = $('<div>').addClass('card-body rounded text-center');
-                
+
                 var name = $('<h5>').addClass('card-title').text(results.name);
                 var rating = $('<h6>').addClass('card-subtitle mb-2').text(results.rating + ' out of 5 stars')
                 var yelpLink = $('<a>').attr({
@@ -436,7 +454,7 @@ $(document).ready(function () {
                 cardText.appendTo(cardInfo);
                 cardInfo.appendTo(cardItem);
                 cardItem.appendTo('#innerCaro');
-                
+
             };
 
             $('#item0').addClass('active');
