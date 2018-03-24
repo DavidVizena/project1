@@ -377,6 +377,11 @@ $(document).ready(function () {
 
                 var newMarker = new google.maps.Marker({
                     animation: google.maps.Animation.DROP,
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        strokeColor: "#ee7b3c",
+                        scale: 7
+                    },
                     position: resultLatLong,
                     map: map,
                     content: contentString
