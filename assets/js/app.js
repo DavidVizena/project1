@@ -339,10 +339,11 @@ $(document).ready(function () {
 
                 bounds.extend(locations[i]);
 
-                map.fitBounds(bounds);
-
                 centerPoint = JSON.parse(JSON.stringify(bounds.getCenter()));
                 console.log(centerPoint);
+
+                map.setCenter(centerPoint);
+                map.setZoom(13);
             });
 
             findPlaces();
@@ -367,47 +368,47 @@ $(document).ready(function () {
                 longitude: centerPoint.lng,
                 radius: 5000,
                 categories: 'cafes,coffee',
+                sort_by: 'distance'
             }
 
         }).then(function (res) {
             console.log(res);
             $('#innerCaro').empty();
 
-            for (var i = 0; i <= 4; i++) {
+            var infoWindow = new google.maps.InfoWindow({});
+
+            for (var i = 0; i <= 9; i++) {
                 var results = res.businesses[i];
                 console.log(results);
 
-
-
                 var resultLat = results.coordinates.latitude;
                 var resultLong = results.coordinates.longitude;
-
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
                 var contentString = results.name;
-                // console.log(contentString);
-
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString,
-
-                });
-
+                console.log(contentString);
 
                 var newMarker = new google.maps.Marker({
                     animation: google.maps.Animation.DROP,
+                    icon: {
+                        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                        strokeColor: "#ee7b3c",
+                        scale: 5
+                    },
                     position: resultLatLong,
-
+                    map: map,
+                    content: contentString
                 });
-                newMarker.setMap(map);
 
-                google.maps.event.addListener(newMarker, "click", (
-                    function (newMarker, i) {
-                        return function () {
-                            infowindow.open(map, newMarker);
-                        }
-                    }
-                )(newMarker, i));
+                newMarker.addListener("mouseover", function () {
+                    infoWindow.setContent(this.content);
+                    infoWindow.open(map, this);
+                });
 
+                newMarker.addListener("click", function () {
+                    infoWindow.setContent(this.content);
+                    infoWindow.open(map, this);
+                });
 
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');

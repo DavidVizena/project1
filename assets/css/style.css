@@ -68,6 +68,21 @@ body {
     display: none;
 }
 
+#meContentWrapper{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.btnClose{
+    position: relative;
+    right: 0;
+}
+
+#logoutBtn{
+    margin-top: 25px;
+}
+
 .card-body {
     background: #ee7b3c;
 }
@@ -353,6 +368,25 @@ a.carousel-control-next {
 @media screen and (min-width: 1px) and (max-width: 640px) {
     #homeRight {
         padding-left: 45px;
+    }
+    #locCol{
+        padding-top: 45px;
+        text-align: center;
+    }
+    #addLocation{
+        position: relative;
+        left: -19%;
+    }
+    a.carousel-control-prev{
+        position: absolute;
+        left: 4.3%;
+    }
+    a.carousel-control-next{
+        position: absolute;
+        right: 4.3%;
+    }
+    h3{
+        text-align: center;
     }
 }
     /*  */
