@@ -111,6 +111,7 @@ $(document).ready(function () {
             $("#userCard").text("Sign Up Today");
             $(".show").show();
             $(".hide").hide();
+            $("#backBtn").hide();
         }
         if (panelStatus) {
             $("#userCard").text("Login");
@@ -120,6 +121,7 @@ $(document).ready(function () {
             $("#signInBtn").hide();
             $("#formConfirmPassword").hide();
             $("#loginBtn").show();
+            $("#backBtn").show();
         }
     }
 
@@ -160,7 +162,7 @@ $(document).ready(function () {
 
     $("#backBtn").on("click", function (e){
         e.preventDefault();
-        statusChecker(false, true);
+        statusChecker(false, false);
     })
     // checks the current users state and if anything is changed do something
     firebase.auth().onAuthStateChanged(function (user) {
