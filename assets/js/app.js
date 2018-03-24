@@ -7,79 +7,77 @@ $(document).ready(function () {
     var uid;
     var user;
     var passFix = false;
+    var userName;
 
     statusChecker();
 
     // SCROLLING ANIMATIONS (FRONT END)
     window.sr = ScrollReveal();
     sr.reveal('.navbar', {
+        mobile: false,
         duration: 2000,
         origin: 'bottom'
     });
     sr.reveal('#homeLeft', {
+        mobile: false,
         duration: 2000,
         origin: 'left',
         distance: '300px'
     });
     sr.reveal('#homeRight', {
+        mobile: false,
         duration: 2000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#exploreHeadSection', {
+        mobile: false,
         duration: 2000,
         origin: 'bottom',
         distance: '300px'
     });
     sr.reveal('#locCol', {
+        mobile: false,
         duration: 1000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#createHeadSection', {
+        mobile: false,
         move: 0
     });
     sr.reveal('#createLeft', {
+        mobile: false,
         duration: 1000,
         origin: 'left',
         distance: '300px'
     });
     sr.reveal('#createRight', {
+        mobile: false,
         duration: 1000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#shareHeadSection', {
+        mobile: false,
         move: 0
     });
     sr.reveal('#shareLeft', {
+        mobile: false,
         duration: 1000,
         origin: 'left',
         distance: '300px'
     });
     sr.reveal('#shareRight', {
+        mobile: false,
         duration: 1000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#mainFooter', {
+        mobile: false,
         move: 0
     });
-    // 
-
-    // SLOW SCROOL CODE
-    // $('a[href*="#"]:not([href="#"])').click(function () {
-    //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-    //         var target = $(this.hash);
-    //         target = target.length ? target : $(' [name' + this.hash.slice(1) + ']');
-    //         if (target.length) {
-    //             $('html, body').animate({
-    //                 scrollTop: target.offset().top
-    //             }, 1000);
-    //             return false;
-    //         }
-    //     }
-    // })
     // 
 
 
@@ -165,7 +163,8 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            var user = firebase.auth().currentUser;
+            user = firebase.auth().currentUser;
+            userName = user.displayName;
             console.log("logged in as: " + user.email);
             statusChecker(true, false);
             var email_id = user.email;
@@ -208,7 +207,7 @@ $(document).ready(function () {
         //makes sure password and pass word confirm match
         if (userPass !== confirmPass && passFix === false) {
             alert("Sorry! your passwords do not match, please fix them to continue")
-        } else  if (passFix === false){
+        } else if (passFix === false) {
             //once passwords do match it then creates the user in the auth section of firebase
             firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function () {
                 //then signs them in with the same credentials
@@ -383,7 +382,7 @@ $(document).ready(function () {
             data: {
                 latitude: centerPoint.lat,
                 longitude: centerPoint.lng,
-                radius: 3000,
+                radius: 5000,
                 categories: 'cafes,coffee',
             }
 
@@ -418,14 +417,14 @@ $(document).ready(function () {
                 });
                 newMarker.setMap(map);
 
-                google.maps.event.addListener( newMarker, "click", (
-                    function(newMarker, i){
-                        return function() {
+                google.maps.event.addListener(newMarker, "click", (
+                    function (newMarker, i) {
+                        return function () {
                             infowindow.open(map, newMarker);
                         }
                     }
                 )(newMarker, i));
-            
+
 
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');
@@ -454,20 +453,22 @@ $(document).ready(function () {
     };
 
     function newChat() {
+        user = firebase.auth().currentUser;
+       console.log(user);
 
         event.preventDefault();
 
         // If the user has been added to database, allow them to use chat
-        /* if (user) { */
+        if (user) {
 
             // Format message then push to chat on database
-            var message =  'Me : ' + $('#chatMessage').val().trim();
+            var message = userName + ': ' + $('#chatMessage').val().trim();
             chat.push(message);
 
-            // Tell the user to enter the game before they can use chat
-       /*  } else {
-            alert('Please log in to chat');
-        } */
+        } else {
+            var message = 'Anonymous : ' + $('#chatMessage').val().trim();
+            chat.push(message);
+        }
 
         // Reset the form
         $('#chatMessage').val('');
@@ -479,16 +480,14 @@ $(document).ready(function () {
 
         // When message comes in, grab it's content, and push that into a new div
         var message = snap.val();
-        var newChat = $('<div>').text(message).attr('class', 'chatMessage');
+        var newChat = $('<div>').text(message)
 
-        /* // Check for alert messages, if none are found, determine if message is from local player or not and apply appropriate class for style
-        if (message.includes('joined')) {
-            newChat.addClass('joined');
-        } else if (message.includes('disconnected')) {
-            newChat.addClass('left');
-        } else if (message.startsWith(playerName)) {
+        // Check for alert messages, if none are found, determine if message is from local player or not and apply appropriate class for style
+        if (message.startsWith(userName)) {
             newChat.addClass('yourChat');
-        }; */
+        } else {
+            newChat.addClass('chatMessage');
+        }
 
         newChat.appendTo('#chatWindow');
 
