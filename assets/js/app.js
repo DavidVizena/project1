@@ -316,8 +316,6 @@ $(document).ready(function () {
 
                 locations.push(locationCordinates);
 
-                console.log(locations);
-
             });
 
         };
@@ -336,12 +334,9 @@ $(document).ready(function () {
 
             var bounds = new google.maps.LatLngBounds;
             $.each(locations, function (i) {
-                console.log('getting location');
 
                 bounds.extend(locations[i]);
-
                 centerPoint = JSON.parse(JSON.stringify(bounds.getCenter()));
-                console.log(centerPoint);
 
                 map.setCenter(centerPoint);
                 map.setZoom(13);
@@ -373,12 +368,10 @@ $(document).ready(function () {
             }
 
         }).then(function (res) {
-            console.log(res);
+
             $('#innerCaro').empty();
 
             var infoWindow = new google.maps.InfoWindow({});
-
-            console.log(resultMarkers);
 
             for (var i=0; i<resultMarkers.length; i++) {
                 resultMarkers[i].setMap(null)
@@ -388,7 +381,6 @@ $(document).ready(function () {
 
             for (var i = 0; i <= 9; i++) {
                 var results = res.businesses[i];
-                console.log(results);
 
                 var resultLatLong = new google.maps.LatLng(results.coordinates.latitude, results.coordinates.longitude)
 
@@ -446,7 +438,6 @@ $(document).ready(function () {
 
     function newChat() {
         user = firebase.auth().currentUser;
-        console.log(user);
 
         event.preventDefault();
 
