@@ -339,10 +339,15 @@ a.carousel-control-next{
     height:150px;
     overflow: auto;
     background-color: white;
+    text-align: left;
 }
 
 .chatMessage {
     color:black;
+}
+
+.yourChat {
+    color: #ee7b3c;
 }
 /*  */
 
