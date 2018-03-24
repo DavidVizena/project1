@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var locations = [];
+    var locationMarkers = [];
     var resultMarkers = [];
     var center;
     var map;
@@ -9,6 +10,7 @@ $(document).ready(function () {
     var user;
     var passFix = false;
     var userName;
+    var centerPoint;
 
     statusChecker();
 
@@ -306,12 +308,13 @@ $(document).ready(function () {
 
                 var newMarker = new google.maps.Marker({
                     animation: google.maps.Animation.DROP,
-                    position: locationCordinates
+                    position: locationCordinates,
+                    map: map
                 });
 
-                newMarker.setMap(map);
-
                 locations.push(locationCordinates);
+
+                locationMarkers.push(newMarker);
 
             });
 
@@ -319,8 +322,40 @@ $(document).ready(function () {
 
     };
 
+    function clearLocations() {
 
-    var centerPoint;
+        event.preventDefault();
+
+        $.each(locationMarkers, function (i) {
+            locationMarkers[i].setMap(null);
+        })
+
+        $.each(resultMarkers, function (i) {
+            resultMarkers[i].setMap(null)
+        })
+
+        resultMarkers = [];
+        locationMarkers = [];
+        locations = [];
+        $('#addedLocations').empty();
+
+        map.setCenter(new google.maps.LatLng(29.756846, -95.363444));
+        map.setZoom(10);
+
+        $('#innerCaro').empty();
+
+        var defaultCard = $('<div>').addClass('carousel-item active');
+        var defaultInfo = $('<div>').addClass('card text-center');
+        var defaultText = $('<div>').addClass('card-body rounded text-center');
+
+        var title = $('<h5>').addClass('card-title').text('Find great places to meet up with your friends!');
+        var subtitle = $('<h6>').addClass('card-subtitle mb-2 text-muted').text('Enter your addresses above, hit Let\'s Meet, and Huddle will do the rest!')
+
+        defaultText.append(title, subtitle);
+        defaultText.appendTo(defaultInfo);
+        defaultInfo.appendTo(defaultCard);
+        defaultCard.appendTo('#innerCaro');
+    }
 
 
     function findCenter() {
@@ -370,9 +405,9 @@ $(document).ready(function () {
 
             var infoWindow = new google.maps.InfoWindow({});
 
-            for (var i = 0; i < resultMarkers.length; i++) {
+            $.each(resultMarkers, function (i) {
                 resultMarkers[i].setMap(null)
-            }
+            })
 
             resultMarkers = [];
 
@@ -425,7 +460,6 @@ $(document).ready(function () {
 
             };
 
-            $('#item0').addClass('active');
             $('#card0').addClass('active');
 
         });
@@ -500,6 +534,8 @@ $(document).ready(function () {
     $('#submitLocations').on('click', findCenter);
 
     $('#newChat').on('click', newChat);
+
+    $('#clearAllSpots').on('click', clearLocations);
 
     makeMap();
 
