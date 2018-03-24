@@ -397,7 +397,7 @@
         }
         .logo {
             position:fixed;
-            transform: translate(100%, -70%) !important;
+            transform: translate(30%, -70%) !important;
         }
     }
     /*  */
