@@ -228,6 +228,23 @@
         right: 3.0%;
         border-radius: 4%;
     }
+
+    #chatWindow{
+        border: 2px solid #333;
+        border-radius: 2%;
+    }
+
+    #chatMessage{
+        border: 2px solid #333;
+        border-radius: 2%;
+    }
+
+    #newChat {
+        background-color: #ced4da;
+        border: 2px solid #333;
+        border-radius: 2%;
+    }
+
     /* SLIDE OUT FROM LEFT SIDE */
 
     #addText {
