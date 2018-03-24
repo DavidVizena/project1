@@ -80,7 +80,10 @@ $(document).ready(function () {
     });
     // 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 2999a381c2aaa896a954c98c2c8ede73cb007278
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",
@@ -120,9 +123,6 @@ $(document).ready(function () {
             $("#loginBtn").show();
         }
     }
-
-
-
 
     // all buttons used for signIn, logout, and login functionality
     $("#signInBtn").on("click", function (e) {
@@ -269,28 +269,6 @@ $(document).ready(function () {
             var k = keys[i];
         };
     }
-
-
-    // $("#contactSubmit").on("click", function (e) {
-    //     var name = $("#contactName").val(),
-    //         email = $("#contactEmail").val(),
-    //         message = $("#contactMessage").val();
-
-    //     if (!name || !email || !message) {
-    //         alertify.error("please check that all inputs are completed!");
-    //     } else {
-    //         $.ajax({
-    //             url: "https://formspree.io/rovch@protonmail.com",
-    //             method: "POST",
-    //             data: $(this).serialize(),
-    //             dataType: "json"
-    //         });
-    //         e.preventDefault()
-    //         alertify.success("Email sent!")
-
-    //     }
-    // });
-
 
     function newLocation() {
         event.preventDefault();
