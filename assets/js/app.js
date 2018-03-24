@@ -330,10 +330,11 @@ $(document).ready(function () {
 
                 bounds.extend(locations[i]);
 
-                map.fitBounds(bounds);
-
                 centerPoint = JSON.parse(JSON.stringify(bounds.getCenter()));
                 console.log(centerPoint);
+
+                map.setCenter(centerPoint);
+                map.setZoom(13);
             });
 
             findPlaces();
@@ -390,7 +391,7 @@ $(document).ready(function () {
                     content: contentString
                 });
 
-                newMarker.addListener("click", function () {
+                newMarker.addListener("mouseover", function () {
                     infoWindow.setContent(this.content);
                     infoWindow.open(map, this);
                 });
