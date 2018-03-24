@@ -167,7 +167,7 @@ $(document).ready(function () {
             var editGreeting = $("#userCard").text("Welcome User : " + user.email);
             var testId = user.uid;
             uidFirebase();
-
+            //checks if user is in the "Data section" of firebase if not it then adds it.
             function uidFirebase() {
                 db.ref("user").child(testId).once('value', function (snapshot) {
                     if (snapshot.exists()) {
@@ -204,13 +204,17 @@ $(document).ready(function () {
         if (userPass !== confirmPass && passFix === false) {
             alert("Sorry! your passwords do not match, please fix them to continue")
         } else if (passFix === false) {
+            console.log("in");
             //once passwords do match it then creates the user in the auth section of firebase
             firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function () {
                 //then signs them in with the same credentials
                 firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function () {
+                    console.log("in2");
                     firebase.auth().currentUser.updateProfile({
-                        displayName: userName,
-                    })
+                        displayName: userName
+                    }).then(function(){
+                        document.location.reload(true);
+                    });
                 }).catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
@@ -233,7 +237,10 @@ $(document).ready(function () {
         var userEmail = $("#formEmail").val().trim();
         var userPass = $("#formPassword").val().trim();
         console.log(userEmail);
-        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
+        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function(){
+            console.log(firebase.auth().currentUser.displayName)
+            var me = $("#meNav").text(firebase.auth().currentUser.displayName);
+        }).catch(function (error) {
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -251,19 +258,21 @@ $(document).ready(function () {
 
     //pushes data to firebase
     function submitData() {
-        var ref = db.ref("user");
+        var ref = db.ref("chat");
         ref.on("value", getData);
     }
 
     function getData(data) {
         $(".clearStuff").remove();
-        var userGroups = data.val();
+        var userChat = data.val();
         //stores each branch in the "newTrain" node to an array
-        var keys = Object.keys(userGroups);
+        var keys = Object.keys(userChat);
         //iterates through each branch in the "newTrain" node using keys
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
         };
+        console.log(keys);
+        var me = $("#meNav").text(firebase.auth().currentUser.displayName);
     }
 
     function newLocation() {
@@ -379,15 +388,15 @@ $(document).ready(function () {
                 // console.log(contentString);
 
                 var infowindow = new google.maps.InfoWindow({
-                     content: contentString,
-                     
+                    content: contentString,
+
                 });
 
 
                 var newMarker = new google.maps.Marker({
                     animation: google.maps.Animation.DROP,
                     position: resultLatLong,
-                    
+
                 });
                 newMarker.setMap(map);
 
@@ -428,7 +437,7 @@ $(document).ready(function () {
 
     function newChat() {
         user = firebase.auth().currentUser;
-       console.log(user);
+        console.log(user);
 
         event.preventDefault();
 
