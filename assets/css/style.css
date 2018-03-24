@@ -396,7 +396,8 @@
             text-align: center;
         }
         .logo {
-            position: fixed;
+            position:fixed;
+            transform: translate(30%, -70%) !important;
         }
     }
     /*  */
