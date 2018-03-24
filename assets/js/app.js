@@ -402,16 +402,19 @@ $(document).ready(function () {
 
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
-                var contentString = "<div> its working </div>";
+                var contentString = results.name;
+                // console.log(contentString);
 
                 var infowindow = new google.maps.InfoWindow({
-                    content: contentString
+                     content: contentString,
+                     
                 });
 
 
                 var newMarker = new google.maps.Marker({
                     animation: google.maps.Animation.DROP,
-                    position: resultLatLong
+                    position: resultLatLong,
+                    
                 });
                 newMarker.setMap(map);
 
