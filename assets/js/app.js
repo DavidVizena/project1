@@ -12,6 +12,7 @@ $(document).ready(function () {
 
     // SCROLLING ANIMATIONS (FRONT END)
     window.sr = ScrollReveal();
+    window.sr = new scrollReveal({ mobile: false })
     sr.reveal('.navbar', {
         duration: 2000,
         origin: 'bottom'
