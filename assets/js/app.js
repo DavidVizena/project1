@@ -378,9 +378,9 @@ $(document).ready(function () {
                 var newMarker = new google.maps.Marker({
                     animation: google.maps.Animation.DROP,
                     icon: {
-                        path: google.maps.SymbolPath.CIRCLE,
+                        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
                         strokeColor: "#ee7b3c",
-                        scale: 7
+                        scale: 5
                     },
                     position: resultLatLong,
                     map: map,
