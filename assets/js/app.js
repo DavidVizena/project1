@@ -11,8 +11,7 @@ $(document).ready(function () {
     statusChecker();
 
     // SCROLLING ANIMATIONS (FRONT END)
-    window.sr = ScrollReveal();
-    window.sr = new scrollReveal({ mobile: false })
+    window.sr = ScrollReveal({ mobile: false });
     sr.reveal('.navbar', {
         duration: 2000,
         origin: 'bottom'
