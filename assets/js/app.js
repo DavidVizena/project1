@@ -368,55 +368,26 @@ $(document).ready(function () {
                 var results = res.businesses[i];
                 console.log(results);
 
-
-
                 var resultLat = results.coordinates.latitude;
                 var resultLong = results.coordinates.longitude;
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
                 var contentString = results.name;
-                // console.log(contentString);
-
-                var infowindow = new google.maps.InfoWindow({
-                     content: contentString,
-                     
-                });
-
+                console.log(contentString);
 
                 var newMarker = new google.maps.Marker({
                     animation: google.maps.Animation.DROP,
                     position: resultLatLong,
-                    
+                    map: map,
+                    content: contentString
                 });
-                newMarker.setMap(map);
 
-                google.maps.event.addListener(newMarker, "click", (
-                    function (newMarker, i) {
-                        return function () {
-                            infowindow.open(map, newMarker);
-                        }
-                    }
-                )(newMarker, i));
+                var infoWindow = new google.maps.InfoWindow({});
 
-                for(int i = 0; i < locations.length; i++){
-                    var latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
-                    var contentString = locations[i][0];
-                
-                    marker = new google.maps.Marker({           
-                          position: latLng,
-                          map: map,
-                          contentString: contentString
-                    });
-                
-                    var infowindow = new google.maps.InfoWindow({});
-                
-                    marker.addListener('click', function() {
-                           infowindow.setContent(this.contentString);
-                           infowindow.open(map, this);
-                           map.setCenter(this.getPosition());
-                     });
-                }
-
+                newMarker.addListener("click", function () {
+                    infoWindow.setContent(this.content);
+                    infoWindow.open(map, this);
+                });
 
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');
@@ -446,7 +417,7 @@ $(document).ready(function () {
 
     function newChat() {
         user = firebase.auth().currentUser;
-       console.log(user);
+        console.log(user);
 
         event.preventDefault();
 
