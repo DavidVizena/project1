@@ -362,5 +362,13 @@ a.carousel-control-next {
         position: relative;
         left: -19%;
     }
+    a.carousel-control-prev{
+        position: absolute;
+        left: 4.3%;
+    }
+    a.carousel-control-next{
+        position: absolute;
+        right: 4.3%;
+    }
 }
     /*  */
