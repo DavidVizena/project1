@@ -404,10 +404,12 @@ $(document).ready(function () {
                 "cache-control": "no-cache"
             },
             data: {
+                term: 'cafes',
                 latitude: centerPoint.lat,
                 longitude: centerPoint.lng,
-                radius: 5000,
-                categories: 'cafes[US]'
+                radius: 3000,
+                categories: 'cafes,coffee',
+                sort_by: 'rating'
             }
 
         }).then(function (res) {
