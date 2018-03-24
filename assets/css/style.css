@@ -352,9 +352,7 @@ a.carousel-control-next {
 
 @media screen and (min-width: 1px) and (max-width: 640px) {
     #homeRight {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        padding-left: 45px;
     }
 }
     /*  */
