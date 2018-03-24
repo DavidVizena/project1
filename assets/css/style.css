@@ -66,6 +66,8 @@ body {
 
 #meNav {
     display: none;
+    color: #ee7b3c;
+    cursor: pointer;
 }
 
 #meContentWrapper{

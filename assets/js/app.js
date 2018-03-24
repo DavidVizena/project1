@@ -172,7 +172,7 @@ $(document).ready(function () {
             function uidFirebase() {
                 db.ref("user").child(testId).once('value', function (snapshot) {
                     if (snapshot.exists()) {
-                        console.log(user.email + " exist in Database");
+                        console.log(user.email + " exist");
                         submitData();
                     } else {
                         console.log("Created " + user.displayName + "'s Firebase data");
@@ -213,7 +213,7 @@ $(document).ready(function () {
                     console.log("in2");
                     firebase.auth().currentUser.updateProfile({
                         displayName: userName
-                    }).then(function(){
+                    }).then(function () {
                         document.location.reload(true);
                     });
                 }).catch(function (error) {
@@ -237,9 +237,7 @@ $(document).ready(function () {
         // grabs data from input fields
         var userEmail = $("#formEmail").val().trim();
         var userPass = $("#formPassword").val().trim();
-        console.log(userEmail);
-        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function(){
-            console.log(firebase.auth().currentUser.displayName)
+        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function () {
             var me = $("#meNav").text(firebase.auth().currentUser.displayName);
         }).catch(function (error) {
             // Handle Errors here.
@@ -271,11 +269,7 @@ $(document).ready(function () {
         //iterates through each branch in the "newTrain" node using keys
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
-            console.log("up" + keys[i]);
         };
-        // for (var i = 0; i <keys.length; i--){
-        //     console.log("down" + keys[i]);
-        // }
         var me = $("#meNav").text(firebase.auth().currentUser.displayName);
     }
 
@@ -376,11 +370,11 @@ $(document).ready(function () {
 
             var infoWindow = new google.maps.InfoWindow({});
 
-            for (var i=0; i<resultMarkers.length; i++) {
+            for (var i = 0; i < resultMarkers.length; i++) {
                 resultMarkers[i].setMap(null)
             }
 
-            resultMarkers=[];
+            resultMarkers = [];
 
             for (var i = 0; i <= 9; i++) {
                 var results = res.businesses[i];
