@@ -68,6 +68,21 @@ body {
     display: none;
 }
 
+#meContentWrapper{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.btnClose{
+    position: relative;
+    right: 0;
+}
+
+#logoutBtn{
+    margin-top: 25px;
+}
+
 .card-body {
     background: #ee7b3c;
 }
