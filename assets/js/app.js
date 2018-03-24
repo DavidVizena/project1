@@ -358,13 +358,16 @@ $(document).ready(function () {
                 longitude: centerPoint.lng,
                 radius: 5000,
                 categories: 'cafes,coffee',
+                sort_by: 'distance'
             }
 
         }).then(function (res) {
             console.log(res);
             $('#innerCaro').empty();
 
-            for (var i = 0; i <= 4; i++) {
+            var infoWindow = new google.maps.InfoWindow({});
+
+            for (var i = 0; i <= 9; i++) {
                 var results = res.businesses[i];
                 console.log(results);
 
@@ -386,8 +389,6 @@ $(document).ready(function () {
                     map: map,
                     content: contentString
                 });
-
-                var infoWindow = new google.maps.InfoWindow({});
 
                 newMarker.addListener("click", function () {
                     infoWindow.setContent(this.content);
