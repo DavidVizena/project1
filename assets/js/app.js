@@ -7,66 +7,83 @@ $(document).ready(function () {
     var uid;
     var user;
     var passFix = false;
+    var userName;
 
     statusChecker();
 
     // SCROLLING ANIMATIONS (FRONT END)
     window.sr = ScrollReveal();
     sr.reveal('.navbar', {
+        mobile: false,
         duration: 2000,
         origin: 'bottom'
     });
     sr.reveal('#homeLeft', {
+        mobile: false,
         duration: 2000,
         origin: 'left',
         distance: '300px'
     });
     sr.reveal('#homeRight', {
+        mobile: false,
         duration: 2000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#exploreHeadSection', {
+        mobile: false,
         duration: 2000,
         origin: 'bottom',
         distance: '300px'
     });
     sr.reveal('#locCol', {
+        mobile: false,
         duration: 1000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#createHeadSection', {
+        mobile: false,
         move: 0
     });
     sr.reveal('#createLeft', {
+        mobile: false,
         duration: 1000,
         origin: 'left',
         distance: '300px'
     });
     sr.reveal('#createRight', {
+        mobile: false,
         duration: 1000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#shareHeadSection', {
+        mobile: false,
         move: 0
     });
     sr.reveal('#shareLeft', {
+        mobile: false,
         duration: 1000,
         origin: 'left',
         distance: '300px'
     });
     sr.reveal('#shareRight', {
+        mobile: false,
         duration: 1000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#mainFooter', {
+        mobile: false,
         move: 0
     });
     // 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2999a381c2aaa896a954c98c2c8ede73cb007278
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",
@@ -78,6 +95,7 @@ $(document).ready(function () {
     };
     firebase.initializeApp(config);
     db = firebase.database();
+    var chat = db.ref('/chat');
 
     //calls function to check if a user is logged in or not
     statusChecker();
@@ -145,7 +163,8 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            var user = firebase.auth().currentUser;
+            user = firebase.auth().currentUser;
+            userName = user.displayName;
             console.log("logged in as: " + user.email);
             statusChecker(true, false);
             var email_id = user.email;
@@ -342,7 +361,7 @@ $(document).ready(function () {
                 latitude: centerPoint.lat,
                 longitude: centerPoint.lng,
                 radius: 5000,
-                categories: 'cafes[US]'
+                categories: 'cafes,coffee',
             }
 
         }).then(function (res) {
@@ -408,6 +427,48 @@ $(document).ready(function () {
 
     };
 
+    function newChat() {
+        user = firebase.auth().currentUser;
+       console.log(user);
+
+        event.preventDefault();
+
+        // If the user has been added to database, allow them to use chat
+        if (user) {
+
+            // Format message then push to chat on database
+            var message = userName + ': ' + $('#chatMessage').val().trim();
+            chat.push(message);
+
+        } else {
+            var message = 'Anonymous : ' + $('#chatMessage').val().trim();
+            chat.push(message);
+        }
+
+        // Reset the form
+        $('#chatMessage').val('');
+
+    }
+
+    // Listens to messages added to chat
+    chat.on('child_added', function (snap) {
+
+        // When message comes in, grab it's content, and push that into a new div
+        var message = snap.val();
+        var newChat = $('<div>').text(message)
+
+        // Check for alert messages, if none are found, determine if message is from local player or not and apply appropriate class for style
+        if (message.startsWith(userName)) {
+            newChat.addClass('yourChat');
+        } else {
+            newChat.addClass('chatMessage');
+        }
+
+        newChat.appendTo('#chatWindow');
+
+        // Automatically move the scroll position as the messages extend past what can be seen in initial window
+        $('#chatWindow').scrollTop($('#chatWindow')[0].scrollHeight)
+    })
 
 
 
@@ -427,17 +488,13 @@ $(document).ready(function () {
 
     }
 
+
+
     $('#addLocation').on('click', newLocation);
 
     $('#submitLocations').on('click', findCenter);
 
-    /* $(document).on('click', '.carousel-control-prev', function(){
-        $('#yelpCaro').carousel('prev');
-    });
-
-    $(document).on('click', '.carousel-control-next', function(){
-        $('#yelpCaro').carousel('next');
-    }); */
+    $('#newChat').on('click', newChat);
 
     makeMap();
 
