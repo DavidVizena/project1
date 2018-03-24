@@ -80,22 +80,6 @@ $(document).ready(function () {
     });
     // 
 
-    // SLOW SCROOL CODE
-    // $('a[href*="#"]:not([href="#"])').click(function () {
-    //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-    //         var target = $(this.hash);
-    //         target = target.length ? target : $(' [name' + this.hash.slice(1) + ']');
-    //         if (target.length) {
-    //             $('html, body').animate({
-    //                 scrollTop: target.offset().top
-    //             }, 1000);
-    //             return false;
-    //         }
-    //     }
-    // })
-    // 
-
-
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",
@@ -135,9 +119,6 @@ $(document).ready(function () {
             $("#loginBtn").show();
         }
     }
-
-
-
 
     // all buttons used for signIn, logout, and login functionality
     $("#signInBtn").on("click", function (e) {
@@ -285,28 +266,6 @@ $(document).ready(function () {
         };
     }
 
-
-    // $("#contactSubmit").on("click", function (e) {
-    //     var name = $("#contactName").val(),
-    //         email = $("#contactEmail").val(),
-    //         message = $("#contactMessage").val();
-
-    //     if (!name || !email || !message) {
-    //         alertify.error("please check that all inputs are completed!");
-    //     } else {
-    //         $.ajax({
-    //             url: "https://formspree.io/rovch@protonmail.com",
-    //             method: "POST",
-    //             data: $(this).serialize(),
-    //             dataType: "json"
-    //         });
-    //         e.preventDefault()
-    //         alertify.success("Email sent!")
-
-    //     }
-    // });
-
-
     function newLocation() {
         event.preventDefault();
         // Verify that something has been entered
@@ -415,16 +374,19 @@ $(document).ready(function () {
                 var resultLong = results.coordinates.longitude;
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
-                var contentString = "<div> its working </div>";
+                var contentString = results.name;
+                // console.log(contentString);
 
                 var infowindow = new google.maps.InfoWindow({
-                    content: contentString
+                     content: contentString,
+                     
                 });
 
 
                 var newMarker = new google.maps.Marker({
                     animation: google.maps.Animation.DROP,
-                    position: resultLatLong
+                    position: resultLatLong,
+                    
                 });
                 newMarker.setMap(map);
 
