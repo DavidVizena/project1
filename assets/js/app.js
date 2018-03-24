@@ -80,10 +80,6 @@ $(document).ready(function () {
     });
     // 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2999a381c2aaa896a954c98c2c8ede73cb007278
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",
