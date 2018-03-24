@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var locations = [];
+    var resultMarkers = [];
     var center;
     var map;
     var userStatus = false;
@@ -368,16 +369,21 @@ $(document).ready(function () {
 
             var infoWindow = new google.maps.InfoWindow({});
 
+            console.log(resultMarkers);
+
+            for (var i=0; i<resultMarkers.length; i++) {
+                resultMarkers[i].setMap(null)
+            }
+
+            resultMarkers=[];
+
             for (var i = 0; i <= 9; i++) {
                 var results = res.businesses[i];
                 console.log(results);
 
-                var resultLat = results.coordinates.latitude;
-                var resultLong = results.coordinates.longitude;
-                var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
+                var resultLatLong = new google.maps.LatLng(results.coordinates.latitude, results.coordinates.longitude)
 
-                var contentString = results.name;
-                console.log(contentString);
+                var contentString = '<div class="mapInfo">' + results.name + '</div>';
 
                 var newMarker = new google.maps.Marker({
                     animation: google.maps.Animation.DROP,
@@ -400,6 +406,8 @@ $(document).ready(function () {
                     infoWindow.setContent(this.content);
                     infoWindow.open(map, this);
                 });
+
+                resultMarkers.push(newMarker);
 
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');
