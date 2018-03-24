@@ -1,400 +1,402 @@
     /* Begin CSS */
 
-body {
-    background: #333;
-    color: #fff;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    position: relative;
-    left: 0%;
-    float: right;
-    transition: .75s;
-    overflow: auto;
-}
-
-.navbar {
-    border-bottom: #ee7b3c 3px solid;
-    opacity: 0.8;
-    padding: 20px;
-}
-
-.logo {
-    position: absolute !important;
-    top: 64% !important;
-    left: 20% !important;
-    transform: translate(-50%, -45%) !important;
-    width: 9% !important;
-}
-
-.pathLogo {
-    stroke: #fff;
-    fill: #fff;
-    stroke-dasharray: 3200;
-    opacity: 10;
-    animation: animate 3s cubic-bezier(0, 0.23, 1, .1)
-}
-
-@keyframes animate {
-    0% {
-        opacity: 0;
-        fill: none;
-        stroke-dashoffset: 3200;
-    }
-    30% {
-        opacity: 10;
-        fill: none;
-        stroke-dashoffset: 3200;
-    }
-    90% {
-        fill: rgba(255, 255, 255, 0)(red, green, blue)
-    }
-    100% {
-        opacity: 10;
-        fill: rgba(255, 255, 255, 1);
-        stroke-dashoffset: 0;
-    }
-}
-
-#homeSection {
-    background: url("../images/sunsetBG.jpeg") no-repeat;
-    min-height: 700px;
-    background-size: cover;
-    background-attachment: fixed;
-    display: none;
-}
-
-#meNav {
-    display: none;
-}
-
-#meContentWrapper{
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-
-.btnClose{
-    position: relative;
-    right: 0;
-}
-
-#logoutBtn{
-    margin-top: 25px;
-}
-
-.card-body {
-    background: #ee7b3c;
-}
-
-.navbar-brand {
-    color: #ee7b3c !important;
-}
-
-#addGroupBtn {
-    margin-top: 8px;
-}
-
-.darkOverlay {
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 700px;
-}
-
-.homeInner {
-    padding-top: 150px;
-}
-
-.card-form {
-    opacity: 0.8;
-}
-
-.fa-check {
-    color: #ee7b3c;
-    background: #fff;
-    padding: 4px;
-    border-radius: 5px;
-    font-size: 30px;
-}
-
-#createHeadSection {
-    background: #ee7b3c;
-}
-
-#shareHeadSection {
-    background: #ee7b3c;
-}
-
-.btn {
-    background: #ee7b3c;
-}
-
-.links img {
-    height: 50px;
-    width: 50px;
-    /* background-color: #fff; */
-}
-
-#exploreCheck {
-    color: #fff;
-    background: #333;
-    padding: 4px;
-    border-radius: 5px;
-    font-size: 30px;
-}
-
-@keyframes float {
-    0% {
-        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-        transform: translatey(0px);
-    }
-    50% {
-        box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
-        transform: translatey(-10px);
-    }
-    100% {
-        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-        transform: translatey(0px);
-    }
-}
-
-#map {
-    height: 500px;
-    width: 500px;
-    box-sizing: border-box;
-    border-radius: 5%;
-    border: 5px #ee7b3c solid;
-    overflow: hidden;
-    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-    transform: translatey(0px);
-    animation: float 6s ease-in-out infinite;
-}
-
-#addedLocations {
-    border: 1px solid #ced4da;
-    background-color: #fff;
-    border-radius: .25rem;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    min-width: 100%;
-}
-
-
-/* card css */
-
-.carousel-inner .card {
-    width: 100%;
-    height: 100%;
-}
-
-.card-body {
-    background-color: #fff;
-    color: #ee7b3c;
-}
-
-.carousel-indicators li {
-    background-color: #6c757d;
-    margin-bottom: -10px;
-}
-
-.carousel-indicators .active {
-    background-color: #ee7b3c !important;
-}
-
-*/ #shareCheck {
-    color: #fff;
-    background: #333;
-    padding: 4px;
-    border-radius: 5px;
-    font-size: 30px;
-}
-
-a.carousel-control-prev {
-    color: #ee7b3c !important;
-    background-color: #ee7b3c !important;
-    width: 50px;
-    left: 3.0%;
-    border-radius: 4%;
-}
-
-a.carousel-control-next {
-    color: #ee7b3c !important;
-    background-color: #ee7b3c !important;
-    width: 50px;
-    right: 3.0%;
-    border-radius: 4%;
-}
-
-
-/* SLIDE OUT FROM LEFT SIDE */
-
-#addText {
-    color: #fffff2 !important;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.fa-plus {
-    color: #333 !important;
-}
-
-.sideNav {
-    width: 275px;
-    height: 100%;
-    top: 10%;
-    background: #333;
-    opacity: .9;
-    position: fixed;
-    z-index: 99;
-    transition: 1s;
-    overflow: auto;
-    left: -275px;
-}
-
-.sideNav a {
-    padding: 10px 10px 10px 30px;
-    text-decoration: none;
-    font-size: 22px;
-    color: #fff;
-    display: block;
-    transition: .5s;
-}
-
-.sideNav a:hover {
-    color: #ee7b3c;
-}
-
-.sideNav .btnClose {
-    position: absolute;
-    z-index: 15;
-    top: 0;
-    right: 22px;
-    font-size: 36;
-    margin-left: 50px;
-}
-
-#sideMenu span {
-    text-align: right;
-}
-
-#switch {
-    display: none;
-}
-
-#switch:checked~.sideNav {
-    left: 0px;
-}
-
-#switch:checked~.body {
-    left: 10%;
-}
-
-
-/* Me SLIDEOUT */
-
-.sideMeNav {
-    width: 275px;
-    height: 100%;
-    top: 10%;
-    background: #333;
-    opacity: .9;
-    position: fixed;
-    z-index: 99;
-    transition: 1s;
-    overflow: auto;
-    right: -275px;
-}
-
-.sideMeNav a {
-    padding: 10px 10px 10px 30px;
-    text-decoration: none;
-    font-size: 22px;
-    color: #fff;
-    display: block;
-    transition: .5s;
-}
-
-.sideMeNav a:hover {
-    color: #ee7b3c;
-}
-
-.sideMeNav .btnClose {
-    position: absolute;
-    z-index: 15;
-    top: 0;
-    right: 22px;
-    font-size: 36;
-    margin-left: 50px;
-}
-
-#sideMeMenu span {
-    text-align: right;
-}
-
-#meSwitch {
-    display: none;
-}
-
-#meSwitch:checked~.sideMeNav {
-    right: 0px;
-}
-
-#meSwitch:checked~.body {
-    right: 10%;
-}
-
-#chatWindow {
-    height: 150px;
-    overflow: auto;
-    background-color: white;
-    text-align: left;
-}
-
-.chatMessage {
-    color: black;
-}
-
-.yourChat {
-    color: #ee7b3c;
-}
-
-.mapInfo {
-    color: #ee7b3c;
-    font-size: 16px;
-}
-
-
-/* MEDIA QUERIES */
-
-@media screen and (min-width: 1px) and (max-width: 640px) {
-    #homeRight {
-        padding-left: 45px;
-    }
-    #locCol{
-        padding-top: 45px;
-        text-align: center;
-    }
-    #addLocation{
+    body {
+        background: #333;
+        color: #fff;
+        width: 100%;
+        height: 100%;
+        margin: 0;
         position: relative;
-        left: -19%;
+        left: 0%;
+        float: right;
+        transition: .75s;
+        overflow: auto;
     }
-    a.carousel-control-prev{
+
+    .navbar {
+        border-bottom: #ee7b3c 3px solid;
+        opacity: 0.8;
+        padding: 20px;
+    }
+
+    .logo {
+        position: absolute !important;
+        top: 64% !important;
+        left: 20% !important;
+        transform: translate(-50%, -45%) !important;
+        width: 9% !important;
+    }
+
+    .pathLogo {
+        stroke: #fff;
+        fill: #fff;
+        stroke-dasharray: 3200;
+        opacity: 10;
+        animation: animate 3s cubic-bezier(0, 0.23, 1, .1)
+    }
+
+    @keyframes animate {
+        0% {
+            opacity: 0;
+            fill: none;
+            stroke-dashoffset: 3200;
+        }
+        30% {
+            opacity: 10;
+            fill: none;
+            stroke-dashoffset: 3200;
+        }
+        90% {
+            fill: rgba(255, 255, 255, 0)(red, green, blue)
+        }
+        100% {
+            opacity: 10;
+            fill: rgba(255, 255, 255, 1);
+            stroke-dashoffset: 0;
+        }
+    }
+
+    #homeSection {
+        background: url("../images/sunsetBG.jpeg") no-repeat;
+        min-height: 700px;
+        background-size: cover;
+        background-attachment: fixed;
+        display: none;
+    }
+
+    #meNav {
+        display: none;
+    }
+
+    #meContentWrapper {
         position: absolute;
-        left: 4.3%;
+        top: 0;
+        width: 100%;
     }
-    a.carousel-control-next{
+
+    .btnClose {
+        position: relative;
+        right: 0;
+    }
+
+    #logoutBtn {
+        margin-top: 25px;
+    }
+
+    .card-body {
+        background: #ee7b3c;
+    }
+
+    .navbar-brand {
+        color: #ee7b3c !important;
+    }
+
+    #addGroupBtn {
+        margin-top: 8px;
+    }
+
+    .darkOverlay {
+        background-color: rgba(0, 0, 0, 0.7);
         position: absolute;
-        right: 4.3%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 700px;
     }
-    h3{
+
+    .homeInner {
+        padding-top: 150px;
+    }
+
+    .card-form {
+        opacity: 0.8;
+    }
+
+    .fa-check {
+        color: #ee7b3c;
+        background: #fff;
+        padding: 4px;
+        border-radius: 5px;
+        font-size: 30px;
+    }
+
+    #createHeadSection {
+        background: #ee7b3c;
+    }
+
+    #shareHeadSection {
+        background: #ee7b3c;
+    }
+
+    .btn {
+        background: #ee7b3c;
+    }
+
+    .links img {
+        height: 50px;
+        width: 50px;
+        /* background-color: #fff; */
+    }
+
+    #exploreCheck {
+        color: #fff;
+        background: #333;
+        padding: 4px;
+        border-radius: 5px;
+        font-size: 30px;
+    }
+
+    @keyframes float {
+        0% {
+            box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+            transform: translatey(0px);
+        }
+        50% {
+            box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+            transform: translatey(-10px);
+        }
+        100% {
+            box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+            transform: translatey(0px);
+        }
+    }
+
+    #map {
+        height: 500px;
+        width: 500px;
+        box-sizing: border-box;
+        border-radius: 5%;
+        border: 5px #ee7b3c solid;
+        overflow: hidden;
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translatey(0px);
+        animation: float 6s ease-in-out infinite;
+    }
+
+    #addedLocations {
+        border: 1px solid #ced4da;
+        background-color: #fff;
+        border-radius: .25rem;
         text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        min-width: 100%;
     }
-    .logo{
+    /* card css */
+
+    .carousel-inner .card {
+        width: 100%;
+        height: 100%;
+    }
+
+    .card-body {
+        background-color: #fff;
+        color: #ee7b3c;
+    }
+
+    .carousel-indicators li {
+        background-color: #6c757d;
+        margin-bottom: -10px;
+    }
+
+    .carousel-indicators .active {
+        background-color: #ee7b3c !important;
+    }
+
+    */ #shareCheck {
+        color: #fff;
+        background: #333;
+        padding: 4px;
+        border-radius: 5px;
+        font-size: 30px;
+    }
+
+    a.carousel-control-prev {
+        color: #ee7b3c !important;
+        background-color: #ee7b3c !important;
+        width: 50px;
+        left: 3.0%;
+        border-radius: 4%;
+    }
+
+    a.carousel-control-next {
+        color: #ee7b3c !important;
+        background-color: #ee7b3c !important;
+        width: 50px;
+        right: 3.0%;
+        border-radius: 4%;
+    }
+    /* SLIDE OUT FROM LEFT SIDE */
+
+    #addText {
+        color: #fffff2 !important;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .fa-plus {
+        color: #333 !important;
+    }
+
+    .sideNav {
+        width: 275px;
+        height: 100%;
+        top: 10%;
+        background: #333;
+        opacity: .9;
         position: fixed;
+        z-index: 99;
+        transition: 1s;
+        overflow: auto;
+        left: -275px;
     }
-}
+
+    .sideNav a {
+        padding: 10px 10px 10px 30px;
+        text-decoration: none;
+        font-size: 22px;
+        color: #fff;
+        display: block;
+        transition: .5s;
+    }
+
+    .sideNav a:hover {
+        color: #ee7b3c;
+    }
+
+    .sideNav .btnClose {
+        position: absolute;
+        z-index: 15;
+        top: 0;
+        right: 22px;
+        font-size: 36;
+        margin-left: 50px;
+    }
+
+    #sideMenu span {
+        text-align: right;
+    }
+
+    #switch {
+        display: none;
+    }
+
+    #switch:checked~.sideNav {
+        left: 0px;
+    }
+
+    #switch:checked~.body {
+        left: 10%;
+    }
+    /* Me SLIDEOUT */
+
+    .sideMeNav {
+        width: 275px;
+        height: 100%;
+        top: 10%;
+        background: #333;
+        opacity: .9;
+        position: fixed;
+        z-index: 99;
+        transition: 1s;
+        overflow: auto;
+        right: -275px;
+    }
+
+    .sideMeNav a {
+        padding: 10px 10px 10px 30px;
+        text-decoration: none;
+        font-size: 22px;
+        color: #fff;
+        display: block;
+        transition: .5s;
+    }
+
+    .sideMeNav a:hover {
+        color: #ee7b3c;
+    }
+
+    .sideMeNav .btnClose {
+        position: absolute;
+        z-index: 15;
+        top: 0;
+        right: 22px;
+        font-size: 36;
+        margin-left: 50px;
+    }
+
+    #sideMeMenu span {
+        text-align: right;
+    }
+
+    #meSwitch {
+        display: none;
+    }
+
+    #meSwitch:checked~.sideMeNav {
+        right: 0px;
+    }
+
+    #meSwitch:checked~.body {
+        right: 10%;
+    }
+
+    #chatWindow {
+        height: 150px;
+        overflow: auto;
+        background-color: white;
+        text-align: left;
+    }
+
+    .chatMessage {
+        color: black;
+    }
+
+    .yourChat {
+        color: #ee7b3c;
+    }
+
+    .mapInfo {
+        color: #ee7b3c;
+        font-size: 16px;
+    }
+    /* MEDIA QUERIES */
+
+    @media screen and (min-width: 1px) and (max-width: 640px) {
+        #homeRight {
+            padding-left: 45px;
+        }
+        #locCol {
+            padding-top: 45px;
+            text-align: center;
+        }
+        #addLocation {
+            position: relative;
+            left: -16%;
+        }
+        #clearAllSpots {
+            position: relative;
+            left: -16%;
+        }
+
+        #submitLocations{
+            position: relative;
+            left: 1%;
+            top: -37px;
+        }
+        a.carousel-control-prev {
+            position: absolute;
+            left: 4.3%;
+        }
+        a.carousel-control-next {
+            position: absolute;
+            right: 4.3%;
+        }
+        h3 {
+            text-align: center;
+        }
+        .logo {
+            position: fixed;
+        }
+    }
     /*  */
