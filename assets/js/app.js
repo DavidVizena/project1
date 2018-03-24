@@ -215,7 +215,7 @@ $(document).ready(function () {
                     console.log("in2");
                     firebase.auth().currentUser.updateProfile({
                         displayName: userName
-                    }).then(function(){
+                    }).then(function () {
                         document.location.reload(true);
                     });
                 }).catch(function (error) {
@@ -240,7 +240,7 @@ $(document).ready(function () {
         var userEmail = $("#formEmail").val().trim();
         var userPass = $("#formPassword").val().trim();
         console.log(userEmail);
-        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function(){
+        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function () {
             console.log(firebase.auth().currentUser.displayName)
             var me = $("#meNav").text(firebase.auth().currentUser.displayName);
         }).catch(function (error) {
@@ -325,25 +325,39 @@ $(document).ready(function () {
 
     };
 
-    function clearLocations () {
+    function clearLocations() {
 
         event.preventDefault();
 
-        $.each(locationMarkers, function (i){
+        $.each(locationMarkers, function (i) {
             locationMarkers[i].setMap(null);
         })
 
-        $.each(resultMarkers, function (i)  {
+        $.each(resultMarkers, function (i) {
             resultMarkers[i].setMap(null)
         })
 
-        resultMarkers=[];
-        locationMarkers=[];
+        resultMarkers = [];
+        locationMarkers = [];
         locations = [];
         $('#addedLocations').empty();
 
         map.setCenter(new google.maps.LatLng(29.756846, -95.363444));
         map.setZoom(10);
+
+        $('#innerCaro').empty();
+
+        var defaultCard = $('<div>').addClass('carousel-item active');
+        var defaultInfo = $('<div>').addClass('card text-center');
+        var defaultText = $('<div>').addClass('card-body rounded text-center');
+
+        var title = $('<h5>').addClass('card-title').text('Find great places to meet up with your friends!');
+        var subtitle = $('<h6>').addClass('card-subtitle mb-2 text-muted').text('Enter your addresses above, hit Let\'s Meet, and Huddle will do the rest!')
+
+        defaultText.append(title, subtitle);
+        defaultText.appendTo(defaultInfo);
+        defaultInfo.appendTo(defaultCard);
+        defaultCard.appendTo('#innerCaro');
     }
 
 
@@ -394,11 +408,11 @@ $(document).ready(function () {
 
             var infoWindow = new google.maps.InfoWindow({});
 
-            $.each(resultMarkers, function (i)  {
+            $.each(resultMarkers, function (i) {
                 resultMarkers[i].setMap(null)
             })
 
-            resultMarkers=[];
+            resultMarkers = [];
 
             for (var i = 0; i <= 9; i++) {
                 var results = res.businesses[i];
@@ -449,7 +463,6 @@ $(document).ready(function () {
 
             };
 
-            $('#item0').addClass('active');
             $('#card0').addClass('active');
 
         });
