@@ -652,7 +652,7 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                         <button type="submit" class="btn" id="addLocation">Add a Spot</button>
 
-                        <button type="submit" class="btn float-right" id="submitLocations">Find a Midpoint</button>
+                        <button type="submit" class="btn float-right" id="submitLocations">Let's Meet!</button>
 
                     </form>
 
@@ -672,15 +672,9 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                                         <div class="card-body rounded text-center">
 
-                                            <h5 class="card-title">Name of place 1</h5>
+                                            <h5 class="card-title">Find great places to meet up with your friends!</h5>
 
-                                            <h6 class="card-subtitle mb-2 text-muted">Ratings</h6>
-
-                                            <p class="card-text">Hours of Operations</p>
-
-                                            <a href="#" class="card-link">Lets Go Here link</a>
-
-                                            <a href="#" class="card-link">Place link</a>
+                                            <h6 class="card-subtitle mb-2 text-muted">Enter your addresses above, hit Let's Meet, and Huddle will do the rest!</h6>
 
                                         </div>
 
@@ -688,25 +682,6 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
 
                                 </div>
 
-                                <div class="carousel-item">
-                                    <div class="card text-center">
-                                        <div class="card-body rounded text-center">
-
-                                            <h5 class="card-title">Name of place 2</h5>
-
-                                            <h6 class="card-subtitle mb-2 text-muted">Ratings</h6>
-
-                                            <p class="card-text">Hours of Operations</p>
-
-                                            <a href="#" class="card-link">Lets Go Here link</a>
-
-                                            <a href="#" class="card-link">Place link</a>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
                             </div>
 
                             <a class="carousel-control-prev" href="#yelpCaro" role="button" data-slide="prev">
@@ -765,7 +740,23 @@ c3.3-4.5,5-9.9,5-16.2l0.5-2l1.5-11.5v-1.5l-1,2l-6.5,13l-6,13.5l-2,5c0,1,0.1,1.9,
                             acquaintances, or hang with groups of new and old! Huddle can help you chat no matter the situation!
                             If there are people around you using the app, you can talk to them via our open chat!</p>
                         <!-- CHAT BOX HERE DONALDDDDDDDD -->
-                        <div class="chatBox" id="chatBox"></div>
+                        <div class='row'>
+
+                            <div class='col-sm-8 chat' id='chatWindow'></div>
+                
+                            <div class='col-sm-4 chat'>
+                
+                                <form>
+                                    <div class="form-group">
+                                        <label for="chatMessage">Type your message here</label>
+                                        <input type="name" class="form-control" id="chatMessage">
+                                    </div>
+                                    <button type="submit" id='newChat' class="btn btn-primary">Send</button>
+                                </form>
+                
+                            </div>
+                
+                        </div>
                         <!--  -->
                         <br>
 

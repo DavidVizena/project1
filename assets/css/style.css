@@ -334,6 +334,16 @@ a.carousel-control-next{
     right: 10%;
     
 }
+
+#chatWindow {
+    height:150px;
+    overflow: auto;
+    background-color: white;
+}
+
+.chatMessage {
+    color:black;
+}
 /*  */
 
 /*  */
