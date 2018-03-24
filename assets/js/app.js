@@ -396,6 +396,11 @@ $(document).ready(function () {
                     infoWindow.open(map, this);
                 });
 
+                newMarker.addListener("click", function () {
+                    infoWindow.setContent(this.content);
+                    infoWindow.open(map, this);
+                });
+
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');
                 var cardText = $('<div>').addClass('card-body rounded text-center');
