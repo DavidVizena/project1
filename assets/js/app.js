@@ -398,7 +398,7 @@ $(document).ready(function () {
                     }
                 )(newMarker, i));
 
-                for(int i = 0; i < locations.length; i++){
+                for(var i = 0; i < locations.length; i++){
                     var latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
                     var contentString = locations[i][0];
                 
