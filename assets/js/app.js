@@ -270,8 +270,11 @@ $(document).ready(function () {
         //iterates through each branch in the "newTrain" node using keys
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
+            console.log("up" + keys[i]);
         };
-        console.log(keys);
+        // for (var i = 0; i <keys.length; i--){
+        //     console.log("down" + keys[i]);
+        // }
         var me = $("#meNav").text(firebase.auth().currentUser.displayName);
     }
 
