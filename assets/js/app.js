@@ -11,58 +11,70 @@ $(document).ready(function () {
     statusChecker();
 
     // SCROLLING ANIMATIONS (FRONT END)
-    window.sr = new ScrollReveal({ mobile: false });
+    window.sr = ScrollReveal();
     sr.reveal('.navbar', {
+        mobile: false,
         duration: 2000,
         origin: 'bottom'
     });
     sr.reveal('#homeLeft', {
+        mobile: false,
         duration: 2000,
         origin: 'left',
         distance: '300px'
     });
     sr.reveal('#homeRight', {
+        mobile: false,
         duration: 2000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#exploreHeadSection', {
+        mobile: false,
         duration: 2000,
         origin: 'bottom',
         distance: '300px'
     });
     sr.reveal('#locCol', {
+        mobile: false,
         duration: 1000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#createHeadSection', {
+        mobile: false,
         move: 0
     });
     sr.reveal('#createLeft', {
+        mobile: false,
         duration: 1000,
         origin: 'left',
         distance: '300px'
     });
     sr.reveal('#createRight', {
+        mobile: false,
         duration: 1000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#shareHeadSection', {
+        mobile: false,
         move: 0
     });
     sr.reveal('#shareLeft', {
+        mobile: false,
         duration: 1000,
         origin: 'left',
         distance: '300px'
     });
     sr.reveal('#shareRight', {
+        mobile: false,
         duration: 1000,
         origin: 'right',
         distance: '300px'
     });
     sr.reveal('#mainFooter', {
+        mobile: false,
         move: 0
     });
     // 
