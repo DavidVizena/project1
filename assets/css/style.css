@@ -354,5 +354,13 @@ a.carousel-control-next {
     #homeRight {
         padding-left: 45px;
     }
+    #locCol{
+        padding-top: 45px;
+        text-align: center;
+    }
+    #addLocation{
+        position: relative;
+        left: -19%;
+    }
 }
     /*  */
