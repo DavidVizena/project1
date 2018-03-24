@@ -372,7 +372,6 @@ $(document).ready(function () {
 
                 var resultLat = results.coordinates.latitude;
                 var resultLong = results.coordinates.longitude;
-
                 var resultLatLong = new google.maps.LatLng(resultLat, resultLong)
 
                 var contentString = results.name;
@@ -398,6 +397,25 @@ $(document).ready(function () {
                         }
                     }
                 )(newMarker, i));
+
+                for(int i = 0; i < locations.length; i++){
+                    var latLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
+                    var contentString = locations[i][0];
+                
+                    marker = new google.maps.Marker({           
+                          position: latLng,
+                          map: map,
+                          contentString: contentString
+                    });
+                
+                    var infowindow = new google.maps.InfoWindow({});
+                
+                    marker.addListener('click', function() {
+                           infowindow.setContent(this.contentString);
+                           infowindow.open(map, this);
+                           map.setCenter(this.getPosition());
+                     });
+                }
 
 
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
