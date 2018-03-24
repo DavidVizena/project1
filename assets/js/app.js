@@ -94,6 +94,7 @@ $(document).ready(function () {
     };
     firebase.initializeApp(config);
     db = firebase.database();
+    var chat = db.ref('/chat');
 
     //calls function to check if a user is logged in or not
     statusChecker();
@@ -380,12 +381,10 @@ $(document).ready(function () {
                 "cache-control": "no-cache"
             },
             data: {
-                term: 'cafes',
                 latitude: centerPoint.lat,
                 longitude: centerPoint.lng,
                 radius: 3000,
                 categories: 'cafes,coffee',
-                sort_by: 'rating'
             }
 
         }).then(function (res) {
@@ -451,6 +450,48 @@ $(document).ready(function () {
 
     };
 
+    function newChat() {
+
+        event.preventDefault();
+
+        // If the user has been added to database, allow them to use chat
+        /* if (user) { */
+
+            // Format message then push to chat on database
+            var message =  'Me : ' + $('#chatMessage').val().trim();
+            chat.push(message);
+
+            // Tell the user to enter the game before they can use chat
+       /*  } else {
+            alert('Please log in to chat');
+        } */
+
+        // Reset the form
+        $('#chatMessage').val('');
+
+    }
+
+    // Listens to messages added to chat
+    chat.on('child_added', function (snap) {
+
+        // When message comes in, grab it's content, and push that into a new div
+        var message = snap.val();
+        var newChat = $('<div>').text(message).attr('class', 'chatMessage');
+
+        /* // Check for alert messages, if none are found, determine if message is from local player or not and apply appropriate class for style
+        if (message.includes('joined')) {
+            newChat.addClass('joined');
+        } else if (message.includes('disconnected')) {
+            newChat.addClass('left');
+        } else if (message.startsWith(playerName)) {
+            newChat.addClass('yourChat');
+        }; */
+
+        newChat.appendTo('#chatWindow');
+
+        // Automatically move the scroll position as the messages extend past what can be seen in initial window
+        $('#chatWindow').scrollTop($('#chatWindow')[0].scrollHeight)
+    })
 
 
 
@@ -470,17 +511,13 @@ $(document).ready(function () {
 
     }
 
+
+
     $('#addLocation').on('click', newLocation);
 
     $('#submitLocations').on('click', findCenter);
 
-    /* $(document).on('click', '.carousel-control-prev', function(){
-        $('#yelpCaro').carousel('prev');
-    });
-
-    $(document).on('click', '.carousel-control-next', function(){
-        $('#yelpCaro').carousel('next');
-    }); */
+    $('#newChat').on('click', newChat);
 
     makeMap();
 
