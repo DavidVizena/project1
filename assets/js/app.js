@@ -67,22 +67,6 @@ $(document).ready(function () {
     });
     // 
 
-    // SLOW SCROOL CODE
-    // $('a[href*="#"]:not([href="#"])').click(function () {
-    //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-    //         var target = $(this.hash);
-    //         target = target.length ? target : $(' [name' + this.hash.slice(1) + ']');
-    //         if (target.length) {
-    //             $('html, body').animate({
-    //                 scrollTop: target.offset().top
-    //             }, 1000);
-    //             return false;
-    //         }
-    //     }
-    // })
-    // 
-
-
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCmsUyEaY8znd7KUyIoiyVkl2SHNPa-Bnw",
@@ -121,9 +105,6 @@ $(document).ready(function () {
             $("#loginBtn").show();
         }
     }
-
-
-
 
     // all buttons used for signIn, logout, and login functionality
     $("#signInBtn").on("click", function (e) {
@@ -207,7 +188,7 @@ $(document).ready(function () {
         //makes sure password and pass word confirm match
         if (userPass !== confirmPass && passFix === false) {
             alert("Sorry! your passwords do not match, please fix them to continue")
-        } else  if (passFix === false){
+        } else if (passFix === false) {
             //once passwords do match it then creates the user in the auth section of firebase
             firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(function () {
                 //then signs them in with the same credentials
@@ -269,28 +250,6 @@ $(document).ready(function () {
             var k = keys[i];
         };
     }
-
-
-    // $("#contactSubmit").on("click", function (e) {
-    //     var name = $("#contactName").val(),
-    //         email = $("#contactEmail").val(),
-    //         message = $("#contactMessage").val();
-
-    //     if (!name || !email || !message) {
-    //         alertify.error("please check that all inputs are completed!");
-    //     } else {
-    //         $.ajax({
-    //             url: "https://formspree.io/rovch@protonmail.com",
-    //             method: "POST",
-    //             data: $(this).serialize(),
-    //             dataType: "json"
-    //         });
-    //         e.preventDefault()
-    //         alertify.success("Email sent!")
-
-    //     }
-    // });
-
 
     function newLocation() {
         event.preventDefault();
@@ -414,14 +373,14 @@ $(document).ready(function () {
                 });
                 newMarker.setMap(map);
 
-                google.maps.event.addListener( newMarker, "click", (
-                    function(newMarker, i){
-                        return function() {
+                google.maps.event.addListener(newMarker, "click", (
+                    function (newMarker, i) {
+                        return function () {
                             infowindow.open(map, newMarker);
                         }
                     }
                 )(newMarker, i));
-            
+
 
                 var cardItem = $('<div>').addClass('carousel-item').attr('id', 'card' + i);
                 var cardInfo = $('<div>').addClass('card text-center');
