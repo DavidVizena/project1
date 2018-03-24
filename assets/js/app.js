@@ -158,6 +158,10 @@ $(document).ready(function () {
         logout();
     });
 
+    $("#backBtn").on("click", function (e){
+        e.preventDefault();
+        statusChecker(false, true);
+    })
     // checks the current users state and if anything is changed do something
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -266,12 +270,12 @@ $(document).ready(function () {
     function getData(data) {
         $(".clearStuff").remove();
         var userChat = data.val();
-        //stores each branch in the "newTrain" node to an array
         var keys = Object.keys(userChat);
-        //iterates through each branch in the "newTrain" node using keys
+        //iterates through each branch in the "chat" node using keys
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
         };
+        console.log(keys);
         var me = $("#meNav").text(firebase.auth().currentUser.displayName);
     }
 
