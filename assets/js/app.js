@@ -527,7 +527,7 @@ $(document).ready(function () {
 
         //iterates through each branch in the "chat" node using keys
 
-        if (keys.length > 5) {
+        if (keys.length > 50) {
 
             console.log('check')
 
