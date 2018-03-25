@@ -15,6 +15,7 @@ $(document).ready(function () {
     var passFix = false;
     var userName;
     var centerPoint;
+    var infoWindow;
 
     //=================================================================================================================================================
     // SCROLLING ANIMATIONS (FRONT END)
@@ -244,6 +245,7 @@ $(document).ready(function () {
             };
             var mapLocate = document.getElementById("map");
             map = new google.maps.Map(mapLocate, mapProp);
+            infoWindow = new google.maps.InfoWindow({});
 
         })
 
@@ -389,8 +391,6 @@ $(document).ready(function () {
             // Clear out carosuel in prep for new cards
             $('#innerCaro').empty();
 
-            var infoWindow = new google.maps.InfoWindow({});
-
             // Remove old result markers, if exist, and clear out array
             $.each(resultMarkers, function (i) {
                 resultMarkers[i].setMap(null)
@@ -415,18 +415,33 @@ $(document).ready(function () {
                     },
                     position: resultLatLong,
                     map: map,
-                    content: contentString
+                    content: contentString,
+                    id: 'card' + i
                 });
 
-                // Adding both mouseover and click events to ensure mobile responsiveness
+                // Adding both mouseover and click events to ensure mobile responsiveness, changes which card is displayed
                 newMarker.addListener("mouseover", function () {
                     infoWindow.setContent(this.content);
                     infoWindow.open(map, this);
+
+                    for (var i=0; i <=9; i++){
+                        $('#card' + i).removeClass('active');
+                    }
+
+                    $('#' + this.id).addClass('active');
+                    $('#yelpCaro').carousel('pause');
                 });
 
                 newMarker.addListener("click", function () {
                     infoWindow.setContent(this.content);
                     infoWindow.open(map, this);
+
+                    for (var i=0; i <=9; i++){
+                        $('#card' + i).removeClass('active');
+                    }
+
+                    $('#' + this.id).addClass('active');
+                    $('#yelpCaro').carousel('pause');
                 });
 
                 // Add to array containing all business markers
@@ -439,12 +454,14 @@ $(document).ready(function () {
 
                 var name = $('<h5>').addClass('card-title').text(results.name);
                 var rating = $('<h6>').addClass('card-subtitle mb-2').text(results.rating + ' out of 5 stars')
+                var addressOne = $('<div>').addClass('address').text(results.location.display_address[0]);
+                var addressTwo = $('<div>').addClass('address').text(results.location.display_address[1]);
                 var yelpLink = $('<a>').attr({
                     'href': results.url,
                     'target': '_blank'
                 }).text('Click here to visit on Yelp');
 
-                cardText.append(name, rating, yelpLink);
+                cardText.append(name, rating, addressOne, addressTwo, yelpLink);
                 cardText.appendTo(cardInfo);
                 cardInfo.appendTo(cardItem);
                 cardItem.appendTo('#innerCaro');
@@ -592,7 +609,24 @@ $(document).ready(function () {
         statusChecker(false, false);
     })
 
+    // Opens the info window related to clicked card
+    $(document).on('click', '.carousel-item', function(){
+        event.preventDefault();
 
+        var clickedCard = $(this).attr('id');
+
+        for (var i=0; i < resultMarkers.length; i++) {
+            if (resultMarkers[i].id === clickedCard) {
+                console.log(resultMarkers[i].id);
+                infoWindow.close();
+                infoWindow.setContent(resultMarkers[i].content);
+                infoWindow.open(map, resultMarkers[i]);
+            }
+        }
+
+        $('#yelpCaro').carousel('pause');
+
+    })
 
     // Closing tag for document.ready
 });
