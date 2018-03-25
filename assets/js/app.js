@@ -160,7 +160,7 @@ $(document).ready(function () {
         logout();
     });
 
-    $("#backBtn").on("click", function (e){
+    $("#backBtn").on("click", function (e) {
         e.preventDefault();
         statusChecker(false, false);
     })
@@ -181,7 +181,7 @@ $(document).ready(function () {
                 db.ref("user").child(testId).once('value', function (snapshot) {
                     if (snapshot.exists()) {
                         console.log(user.email + " exist");
-                        submitData();
+                        var me = $("#meNav").text(firebase.auth().currentUser.displayName);
                     } else {
                         console.log("Created " + user.displayName + "'s Firebase data");
                         db.ref("user").child(testId).set({
@@ -263,23 +263,23 @@ $(document).ready(function () {
 
 
 
-    //pushes data to firebase
-    function submitData() {
-        var ref = db.ref("chat");
-        ref.on("value", getData);
-    }
-
-    function getData(data) {
-        $(".clearStuff").remove();
-        var userChat = data.val();
-        var keys = Object.keys(userChat);
-        //iterates through each branch in the "chat" node using keys
-        for (var i = 0; i < keys.length; i++) {
-            var k = keys[i];
-        };
-        console.log(keys);
-        var me = $("#meNav").text(firebase.auth().currentUser.displayName);
-    }
+    /*    //pushes data to firebase
+       function submitData() {
+           var ref = db.ref("chat");
+           ref.on("value", getData);
+       }
+   
+       function getData(data) {
+           $(".clearStuff").remove();
+           var userChat = data.val();
+           var keys = Object.keys(userChat);
+           //iterates through each branch in the "chat" node using keys
+           for (var i = 0; i < keys.length; i++) {
+               var k = keys[i];
+           };
+           console.log(keys);
+           var me = $("#meNav").text(firebase.auth().currentUser.displayName);
+       } */
 
     function newLocation() {
         event.preventDefault();
@@ -482,11 +482,15 @@ $(document).ready(function () {
         if (user) {
 
             // Format message then push to chat on database
-            var message = userName + ': ' + $('#chatMessage').val().trim();
+            var message = {
+                'text': userName + ': ' + $('#chatMessage').val().trim(),
+            }
             chat.push(message);
 
         } else {
-            var message = 'Anonymous : ' + $('#chatMessage').val().trim();
+            var message = {
+                'text': 'Anonymous : ' + $('#chatMessage').val().trim(),
+            }
             chat.push(message);
         }
 
@@ -499,7 +503,7 @@ $(document).ready(function () {
     chat.on('child_added', function (snap) {
 
         // When message comes in, grab it's content, and push that into a new div
-        var message = snap.val();
+        var message = snap.val().text;
         var newChat = $('<div>').text(message)
 
         // Check for alert messages, if none are found, determine if message is from local player or not and apply appropriate class for style
@@ -513,6 +517,26 @@ $(document).ready(function () {
 
         // Automatically move the scroll position as the messages extend past what can be seen in initial window
         $('#chatWindow').scrollTop($('#chatWindow')[0].scrollHeight)
+    })
+
+    chat.on('value', function (snap) {
+        var userChat = snap.val();
+        var keys = Object.keys(userChat);
+
+        console.log(keys.length);
+
+        //iterates through each branch in the "chat" node using keys
+
+        if (keys.length > 5) {
+
+            console.log('check')
+
+            chat.child(keys[0]).remove();
+
+
+        };
+
+        console.log(keys);
     })
 
 
