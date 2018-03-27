@@ -424,7 +424,7 @@ $(document).ready(function () {
                     infoWindow.setContent(this.content);
                     infoWindow.open(map, this);
 
-                    for (var i=0; i <=9; i++){
+                    for (var i = 0; i <= 9; i++) {
                         $('#card' + i).removeClass('active');
                     }
 
@@ -436,7 +436,7 @@ $(document).ready(function () {
                     infoWindow.setContent(this.content);
                     infoWindow.open(map, this);
 
-                    for (var i=0; i <=9; i++){
+                    for (var i = 0; i <= 9; i++) {
                         $('#card' + i).removeClass('active');
                     }
 
@@ -609,13 +609,13 @@ $(document).ready(function () {
         statusChecker(false, false);
     })
 
-    // Opens the info window related to clicked card
-    $(document).on('click', '.carousel-item', function(){
+    /* // Opens the info window related to clicked card
+    $(document).on('click', '.carousel-item', function () {
         event.preventDefault();
 
         var clickedCard = $(this).attr('id');
 
-        for (var i=0; i < resultMarkers.length; i++) {
+        for (var i = 0; i < resultMarkers.length; i++) {
             if (resultMarkers[i].id === clickedCard) {
                 console.log(resultMarkers[i].id);
                 infoWindow.close();
@@ -626,7 +626,7 @@ $(document).ready(function () {
 
         $('#yelpCaro').carousel('pause');
 
-    })
+    }) */
 
     // Closing tag for document.ready
 });
